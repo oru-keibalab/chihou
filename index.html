@@ -807,20 +807,20 @@
     <div class="summary-inner">
       <div class="sum-title">
         <span>📊 本日のリアルタイム成績（全レース各100円購入）</span>
-        <span style="font-size:10px; color:#9ca3af;">終了 32/48R</span>
+        <span style="font-size:10px; color:#9ca3af;">終了 34/48R</span>
       </div>
       <div class="sum-grid">
         <div class="sum-item">
           <div class="sum-lbl">的中率</div>
-          <div class="sum-val" style="color: #60a5fa;">19 / 32 (59.4%)</div>
+          <div class="sum-val" style="color: #60a5fa;">20 / 34 (58.8%)</div>
         </div>
         <div class="sum-item">
           <div class="sum-lbl">回収率</div>
-          <div class="sum-val" style="color: #ef4444;">89.9%</div>
+          <div class="sum-val" style="color: #ef4444;">86.9%</div>
         </div>
         <div class="sum-item">
           <div class="sum-lbl">本日収支</div>
-          <div class="sum-val" style="color: #ef4444;">-2,580円</div>
+          <div class="sum-val" style="color: #ef4444;">-3,550円</div>
         </div>
       </div>
     </div>
@@ -3923,20 +3923,20 @@
     <div class="container" style="padding-top:4px; padding-bottom:4px;">
       <div class="track-summary-box">
         <div class="ts-title">
-          <span>🏯 名古屋競馬 成績（終了 9/12R）</span>
+          <span>🏯 名古屋競馬 成績（終了 10/12R）</span>
         </div>
         <div class="ts-grid">
           <div class="ts-item">
             <span class="ts-lbl">的中率</span>
-            <span class="ts-val" style="color:#60a5fa;">5/9 (55.6%)</span>
+            <span class="ts-val" style="color:#60a5fa;">5/10 (50.0%)</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">回収率</span>
-            <span class="ts-val" style="color:#f87171;">70.0%</span>
+            <span class="ts-val" style="color:#f87171;">63.0%</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">会場収支</span>
-            <span class="ts-val" style="color:#f87171;">-2,160円</span>
+            <span class="ts-val" style="color:#f87171;">-2,960円</span>
           </div>
         </div>
       </div>
@@ -3973,7 +3973,7 @@
             9R <span style="font-size:10px; opacity:0.8;">17:15</span> 🎯
           </button>
           <button class="race-tab " id="rtab-nagoya-10" onclick="switchRace('nagoya', 10)">
-            10R <span style="font-size:10px; opacity:0.8;">17:50</span>
+            10R <span style="font-size:10px; opacity:0.8;">17:50</span> ✕
           </button>
           <button class="race-tab " id="rtab-nagoya-11" onclick="switchRace('nagoya', 11)">
             11R <span style="font-size:10px; opacity:0.8;">18:20</span>
@@ -5263,11 +5263,50 @@
 
       <!-- 的中・収支結果ブロック & 確定着順 -->
       
-        <div class="result-box result-waiting">
-          <div class="res-head">
-            <span class="res-badge-waiting">⏳ 未発走</span>
-            <span class="res-profit">発走予定 <strong>17:50</strong>（各100円 8点＝800円）</span>
-          </div>
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
+            
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">10</span></td>
+              <td class="t5-name">ビアリッツ<span class="mark-badge mark-tanana" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">▲</span></td>
+              <td class="t5-time">1:36.6</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-2" style="width:20px; height:20px; line-height:18px; font-size:12px;">2</span></td>
+              <td class="t5-name">トリスティ<span class="mark-badge mark-osae" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">△</span></td>
+              <td class="t5-time">1.1/2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">8</span></td>
+              <td class="t5-name">マンデーロウリュウ</td>
+              <td class="t5-time">ハナ</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-3" style="width:20px; height:20px; line-height:18px; font-size:12px;">3</span></td>
+              <td class="t5-name">シスターネビュラ<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">3</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-1" style="width:20px; height:20px; line-height:18px; font-size:12px;">1</span></td>
+              <td class="t5-name">サヤヒメ<span class="mark-badge mark-tokuchu" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">☆</span></td>
+              <td class="t5-time">1/2</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
     </div>
     
@@ -5467,20 +5506,20 @@
     <div class="container" style="padding-top:4px; padding-bottom:4px;">
       <div class="track-summary-box">
         <div class="ts-title">
-          <span>🌟 佐賀競馬 成績（終了 6/12R）</span>
+          <span>🌟 佐賀競馬 成績（終了 7/12R）</span>
         </div>
         <div class="ts-grid">
           <div class="ts-item">
             <span class="ts-lbl">的中率</span>
-            <span class="ts-val" style="color:#60a5fa;">4/6 (66.7%)</span>
+            <span class="ts-val" style="color:#60a5fa;">5/7 (71.4%)</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">回収率</span>
-            <span class="ts-val" style="color:#f87171;">47.3%</span>
+            <span class="ts-val" style="color:#f87171;">51.8%</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">会場収支</span>
-            <span class="ts-val" style="color:#f87171;">-2,530円</span>
+            <span class="ts-val" style="color:#f87171;">-2,700円</span>
           </div>
         </div>
       </div>
@@ -5508,7 +5547,7 @@
             6R <span style="font-size:10px; opacity:0.8;">17:25</span> 🎯
           </button>
           <button class="race-tab " id="rtab-saga-7" onclick="switchRace('saga', 7)">
-            7R <span style="font-size:10px; opacity:0.8;">17:55</span>
+            7R <span style="font-size:10px; opacity:0.8;">17:55</span> 🎯
           </button>
           <button class="race-tab " id="rtab-saga-8" onclick="switchRace('saga', 8)">
             8R <span style="font-size:10px; opacity:0.8;">18:25</span>
@@ -6410,11 +6449,51 @@
 
       <!-- 的中・収支結果ブロック & 確定着順 -->
       
-        <div class="result-box result-waiting">
-          <div class="res-head">
-            <span class="res-badge-waiting">⏳ 未発走</span>
-            <span class="res-profit">発走予定 <strong>17:55</strong>（各100円 8点＝800円）</span>
-          </div>
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>-170円</strong>（払戻 630円 / 各100円）</span>
+              </div>
+              <div class="res-body">馬連 3-7（130円） / ワイド 3-7（130円） / ワイド 5-7（370円）</div>
+            </div>
+            
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-3" style="width:20px; height:20px; line-height:18px; font-size:12px;">3</span></td>
+              <td class="t5-name">ミセスジョーンズ<span class="mark-badge mark-taiko" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">○</span></td>
+              <td class="t5-time">1:22.4</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">7</span></td>
+              <td class="t5-name">マイネルアース<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">2.1/2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-5" style="width:20px; height:20px; line-height:18px; font-size:12px;">5</span></td>
+              <td class="t5-name">レジェンダイズ<span class="mark-badge mark-tanana" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">▲</span></td>
+              <td class="t5-time">5</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">10</span></td>
+              <td class="t5-name">ホスマニエン</td>
+              <td class="t5-time">1.1/4</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-2" style="width:20px; height:20px; line-height:18px; font-size:12px;">2</span></td>
+              <td class="t5-name">オールズフェア<span class="mark-badge mark-osae" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">△</span></td>
+              <td class="t5-time">8</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
     </div>
     

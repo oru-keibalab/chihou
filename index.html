@@ -577,16 +577,13 @@
     }
 
     .xf-avatar {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 14px;
-      color: #000;
+      object-fit: cover;
+      background: #ffffff;
+      border: 2px solid #3f3f46;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
     .xf-text h4 {
@@ -4406,7 +4403,7 @@
     <!-- Xアカウント連携 -->
     <div class="x-follow-box">
       <div class="xf-info">
-        <div class="xf-avatar">おる</div>
+        <img src="profile.png" alt="おる" class="xf-avatar">
         <div class="xf-text">
           <h4>おるの競馬予想（@keiba114ne）</h4>
           <p>競馬歴9年目・独自データ分析</p>

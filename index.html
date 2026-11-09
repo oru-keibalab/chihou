@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おるの地方競馬ナビ | 南関ナイター・全国地方競馬 毎日データ攻略</title>
+  <meta name="description" content="平日ナイター競馬を完全攻略！大井・川崎・船橋・浦和の南関4場から門別・園田・高知まで、地方競馬の毎日レース速報・コース傾向・おるの渾身予想をお届けする地方競馬特化型データメディアです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0A0E17;
+      --bg-card: #121826;
+      --bg-card-hover: #192235;
+      --bg-tag: #1B2438;
+      --border-color: #232F48;
+      --text-main: #FFFFFF;
+      --text-muted: #8EA0BF;
+      --accent-orange: #FF6D00;
+      --accent-orange-dim: rgba(255, 109, 0, 0.12);
+      --accent-gold: #FFD700;
+      --accent-cyan: #00E5FF;
+      --badge-night: #7C4DFF;
+      --badge-main: #FF3366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.7;
+      padding-bottom: 70px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(255, 109, 0, 0.25), rgba(124, 77, 255, 0.25));
+      border: 1px solid var(--accent-orange);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--accent-orange);
+      letter-spacing: 1.5px;
+      display: block;
+      margin-top: -2px;
+    }
+
+    .header-badge {
+      font-size: 11px;
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Concept Banner */
+    .concept-banner {
+      background: linear-gradient(135deg, #172138 0%, #0F1424 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .concept-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .concept-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    .concept-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Ad Container */
+    .ad-container {
+      margin: 22px 0;
+      text-align: center;
+    }
+    .ad-label {
+      display: block;
+      font-size: 9px;
+      color: #556275;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-orange);
+      letter-spacing: -0.2px;
+    }
+
+    /* Race Card */
+    .race-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 18px;
+      margin-bottom: 14px;
+    }
+
+    .race-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .race-badge-night {
+      background: var(--badge-night);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .race-badge-day {
+      background: var(--bg-tag);
+      color: var(--accent-cyan);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .race-time {
+      font-size: 11px;
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .race-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .race-conditions {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .race-point-box {
+      background: var(--bg-main);
+      border-left: 3px solid var(--accent-orange);
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #D1D5DB;
+      line-height: 1.6;
+    }
+
+    /* Course Grid */
+    .course-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    @media (max-width: 480px) {
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .course-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .course-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .course-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .course-desc {
+      font-size: 11px;
+      color: #D1D5DB;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    /* Prediction Slot */
+    .prediction-slot {
+      background: linear-gradient(135deg, rgba(255, 109, 0, 0.08) 0%, rgba(20, 25, 35, 0.95) 100%);
+      border: 2px solid var(--accent-orange);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin: 30px 0;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(255, 109, 0, 0.1);
+    }
+
+    .prediction-badge {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .prediction-heading {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .prediction-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Central Lab Link */
+    .central-link-box {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(0, 230, 118, 0.12));
+      border: 1px solid var(--accent-gold);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 28px 0;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .central-link-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .central-link-sub {
+      font-size: 11px;
+      color: var(--accent-gold);
+    }
+    .central-link-arrow {
+      font-size: 18px;
+      color: var(--accent-gold);
+    }
+
+    /* Profile */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 32px 0 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .profile-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FF6D00, #7C4DFF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .profile-info {
+      flex: 1;
+    }
+    .profile-name {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .profile-bio {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .x-follow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .x-follow-btn:hover {
+      background: #111;
+      border-color: #555;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">🌙</div>
+        <div>
+          <span class="brand-title">おるの地方競馬ナビ</span>
+          <span class="brand-sub">CHIHOU KEIBA NAVI</span>
+        </div>
+      </a>
+      <a href="https://oru-keibalab.github.io/keiba-lab/" class="header-badge" target="_blank" rel="noopener noreferrer">
+        🏇 中央競馬ラボはこちら →
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Concept Banner -->
+    <section class="concept-banner">
+      <div class="concept-icon">🏟️</div>
+      <div>
+        <h2 class="concept-title">平日はナイター地方競馬で熱くなれ！</h2>
+        <p class="concept-desc">大井・川崎・船橋・浦和の南関東4場を中心に、平日の毎日レース傾向・コース攻略・勝負予想をお届けする地方競馬特化型ナビです。</p>
+      </div>
+    </section>
+
+    <!-- 広告枠①: A8.net 320x50 バナー枠 -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / おすすめポイ活で地方馬券代GET</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:4px;">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+          <img border="0" width="320" height="50" alt="ポイ活" src="https://www22.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003013000&mc=1" style="max-width:100%; height:auto; display:block;">
+        </a>
+        <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" alt="">
+      </div>
+    </div>
+
+    <!-- 本日の注目地方レース -->
+    <h2 class="section-title">⚡ 本日 11/9 (月) 注目地方レース速報</h2>
+
+    <!-- 川崎ナイター -->
+    <article class="race-card">
+      <div class="race-card-top">
+        <span class="race-badge-night">🌙 川崎ナイター</span>
+        <span class="race-time">20:15 発走</span>
+      </div>
+      <h3 class="race-title">川崎 11R かながわ消費者トラブル未然防止特別</h3>
+      <div class="race-conditions">
+        <span>ダ 1400m（左）</span>
+        <span>A2B1一組</span>
+        <span>出走 12頭</span>
+      </div>
+      <div class="race-point-box">
+        <strong>【コース攻略メモ】</strong> 川崎ダ1400mはスタンド前スタートでコーナー4回。先行争いが激化してもコーナーがきついため外を回すと大ロスに。内枠の逃げ・先行馬の逃げ粘りを最重視するのが定石！
+      </div>
+    </article>
+
+    <!-- 佐賀ナイター -->
+    <article class="race-card">
+      <div class="race-card-top">
+        <span class="race-badge-night">🌙 佐賀ナイター</span>
+        <span class="race-time">20:05 発走</span>
+      </div>
+      <h3 class="race-title">佐賀 11R 錦秋特別</h3>
+      <div class="race-conditions">
+        <span>ダ 1860m（右）</span>
+        <span>Bクラス</span>
+        <span>出走 12頭</span>
+      </div>
+      <div class="race-point-box">
+        <strong>【コース攻略メモ】</strong> 佐賀の長距離戦。インの深い砂を避けて3〜4コーナーで外からマクれる持続力スタミナ型が浮上しやすいレイアウト。
+      </div>
+    </article>
+
+    <!-- 広告枠②: レース間 インフィード広告枠（A8.net 300x250） -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / おすすめ無料ポイ活で軍資金作り</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:6px;">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+          <img border="0" width="300" height="250" alt="ポイ活ならワラウ" src="https://www29.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003014000&mc=1" style="max-width:100%; height:auto; display:block;">
+        </a>
+        <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" alt="">
+      </div>
+    </div>
+
+    <!-- 南関4場 攻略早見表 -->
+    <h2 class="section-title">🏟️ 南関東4競馬場 コース攻略早見表</h2>
+    <div class="course-grid">
+      <div class="course-card">
+        <div class="course-name">
+          <span>大井競馬場</span>
+          <span class="course-sub">東京・ナイター</span>
+        </div>
+        <p class="course-desc">右回り。直線が地方最長の386m（外回り）。差し・追い込みも届くフェアな舞台。外枠有利傾向あり。</p>
+      </div>
+      <div class="course-card">
+        <div class="course-name">
+          <span>川崎競馬場</span>
+          <span class="course-sub">神奈川・ナイター</span>
+        </div>
+        <p class="course-desc">左回り。コーナーが急で直線300m。逃げ・先行が圧倒的有利！外を回ると大敗リスクあり。</p>
+      </div>
+      <div class="course-card">
+        <div class="course-name">
+          <span>船橋競馬場</span>
+          <span class="course-sub">千葉・ナイター</span>
+        </div>
+        <p class="course-desc">左回り。スパイラルカーブ導入でコーナーでのスピード低下が少なく、差し馬の台頭も目立つ高速ダート。</p>
+      </div>
+      <div class="course-card">
+        <div class="course-name">
+          <span>浦和競馬場</span>
+          <span class="course-sub">埼玉・昼開催</span>
+        </div>
+        <p class="course-desc">左回り。直線220mと極めて短く、コース幅も狭い。圧倒的な前残り競馬でイン先行勢が絶対有利。</p>
+      </div>
+    </div>
+
+    <!-- おるの地方勝負予想枠 -->
+    <section class="prediction-slot">
+      <span class="prediction-badge">🔥 DAILY PREDICTION</span>
+      <h3 class="prediction-heading">🎯 おるの地方競馬渾身予想（本命◎＆買い目）</h3>
+      <p class="prediction-desc">
+        南関ナイターや注目の交流重賞を中心に、管理人・おるの勝負レース予想を夕方に公開予定です！<br>
+        パドック気配とオッズの妙味を捉えた本命馬をお楽しみに！
+      </p>
+    </section>
+
+    <!-- 中央競馬予想ラボへのリンク -->
+    <a href="https://oru-keibalab.github.io/keiba-lab/" class="central-link-box" target="_blank" rel="noopener noreferrer">
+      <div>
+        <div class="central-link-title">🏇 週末の中央重賞予想はこちら！</div>
+        <div class="central-link-sub">エリザベス女王杯・武蔵野S・デイリー杯2歳Sのデータ分析公開中！</div>
+      </div>
+      <div class="central-link-arrow">→</div>
+    </a>
+
+    <!-- 忍者AdMax インプレッション広告枠 -->
+    <div class="ad-container" style="margin: 32px 0;">
+      <span class="ad-label">SPONSORED / インプレッション広告</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:8px; min-height:100px;">
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/s/e95b06bd6b69ee0b778825791b1acd78"></script>
+        <!-- admax -->
+      </div>
+    </div>
+
+    <!-- プロフィール -->
+    <div class="profile-card">
+      <div class="profile-avatar">🐴</div>
+      <div class="profile-info">
+        <div class="profile-name">おる（おるの競馬予想）</div>
+        <p class="profile-bio">競馬歴9年目・平日も休日も競馬漬け！中央・地方を問わず、回収率重視のデータ分析＆穴馬狙いを発信中。</p>
+        <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" class="x-follow-btn">
+          𝕏 @keiba114ne をフォロー
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 おるの地方競馬ナビ All Rights Reserved.
+    </footer>
+
+  </main>
+
+</body>
+</html>

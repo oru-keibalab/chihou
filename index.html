@@ -780,15 +780,15 @@
       <div class="sum-grid">
         <div class="sum-item">
           <div class="sum-lbl">的中率</div>
-          <div class="sum-val" style="color: #60a5fa;">8 / 17 (47.1%)</div>
+          <div class="sum-val" style="color: #60a5fa;">9 / 17 (52.9%)</div>
         </div>
         <div class="sum-item">
           <div class="sum-lbl">回収率</div>
-          <div class="sum-val" style="color: #ef4444;">97.0%</div>
+          <div class="sum-val" style="color: #10b981;">100.3%</div>
         </div>
         <div class="sum-item">
           <div class="sum-lbl">本日収支</div>
-          <div class="sum-val" style="color: #ef4444;">-410円</div>
+          <div class="sum-val" style="color: #10b981;">+40円</div>
         </div>
       </div>
     </div>
@@ -844,7 +844,7 @@
             1R <span style="font-size:10px; opacity:0.8;">15:00</span> ✕
           </button>
           <button class="race-tab " id="rtab-kawasaki-2" onclick="switchRace('kawasaki', 2)">
-            2R <span style="font-size:10px; opacity:0.8;">15:30</span> ✕
+            2R <span style="font-size:10px; opacity:0.8;">15:30</span> 🎯
           </button>
           <button class="race-tab " id="rtab-kawasaki-3" onclick="switchRace('kawasaki', 3)">
             3R <span style="font-size:10px; opacity:0.8;">16:00</span>
@@ -1066,7 +1066,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">イクノナイト</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1097,13 +1097,52 @@
 
       <!-- 的中・収支結果ブロック & 確定着順 -->
       
-            <div class="result-box result-miss">
+            <div class="result-box result-hit">
               <div class="res-head">
-                <span class="res-badge-miss">✕ 不的中</span>
-                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>-350円</strong>（払戻 450円 / 各100円）</span>
               </div>
+              <div class="res-body">ワイド 2-4（290円） / ワイド 1-2（160円）</div>
             </div>
             
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-1" style="width:20px; height:20px; line-height:18px; font-size:12px;">1</span></td>
+              <td class="t5-name">イクノナイト<span class="mark-badge mark-tokuchu" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">☆</span></td>
+              <td class="t5-time">0:56.5</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-4" style="width:20px; height:20px; line-height:18px; font-size:12px;">4</span></td>
+              <td class="t5-name">ビエールブランシュ<span class="mark-badge mark-taiko" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">○</span></td>
+              <td class="t5-time">2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-2" style="width:20px; height:20px; line-height:18px; font-size:12px;">2</span></td>
+              <td class="t5-name">トールキャット<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">3</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">7</span></td>
+              <td class="t5-name">ダイノエイコウ</td>
+              <td class="t5-time">ハナ</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-5" style="width:20px; height:20px; line-height:18px; font-size:12px;">5</span></td>
+              <td class="t5-name">トラストライオン<span class="mark-badge mark-tanana" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">▲</span></td>
+              <td class="t5-time">クビ</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 3R Card -->
@@ -1160,7 +1199,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ラリーバック</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1245,7 +1284,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">オリジン</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1253,7 +1292,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">ソラニネガイヲ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1338,7 +1377,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">アルバレジェンダ</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1346,7 +1385,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">ソルトアイリス</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1532,7 +1571,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">キチョウ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1625,7 +1664,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ラウレア</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -1904,7 +1943,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ヴィヴィアンエイト</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -3438,7 +3477,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">ブラックバトラー</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -4110,7 +4149,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ダバイストリーム</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -4280,6 +4319,44 @@
               </div>
             </div>
             
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-1" style="width:20px; height:20px; line-height:18px; font-size:12px;">1</span></td>
+              <td class="t5-name">ゴールデンボート<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">1:40.2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">11</span></td>
+              <td class="t5-name">レッドジルベスター</td>
+              <td class="t5-time">2.1/2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">9</span></td>
+              <td class="t5-name">ノアソノマ</td>
+              <td class="t5-time">クビ</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">12</span></td>
+              <td class="t5-name">メイショウイサミ<span class="mark-badge mark-osae" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">△</span></td>
+              <td class="t5-time">2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-5" style="width:20px; height:20px; line-height:18px; font-size:12px;">5</span></td>
+              <td class="t5-name">ブルーセルリアン</td>
+              <td class="t5-time">クビ</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 7R Card -->
@@ -4514,7 +4591,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">アミアン</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -4522,7 +4599,7 @@
           <td class="num-cell"><span class="waku-badge waku-3">3</span></td>
           <td class="info-cell">
             <div class="h-name">グラスビジョン</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -4615,7 +4692,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">サヤヒメ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5207,7 +5284,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">サスペンスクィーン</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5300,7 +5377,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">サブノレインボー</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5385,7 +5462,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">サンライズプロミス</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5393,7 +5470,7 @@
           <td class="num-cell"><span class="waku-badge waku-3">3</span></td>
           <td class="info-cell">
             <div class="h-name">ケイサンノーブル</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5478,7 +5555,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">アイアムルンルン</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5486,7 +5563,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">モズオラージュ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5579,7 +5656,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ゴルトツィーゲル</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5672,7 +5749,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">ベラジオボッキーニ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5765,7 +5842,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">ベイデンマリーナ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -5858,7 +5935,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">カパラミプ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -6036,7 +6113,7 @@
           <td class="num-cell"><span class="waku-badge waku-1">1</span></td>
           <td class="info-cell">
             <div class="h-name">エメラルドシティー</div>
-            <div class="h-desc">騎乗。【単穴警戒▲】前走好内容。先行力活かせば首位争い警戒。</div>
+            <div class="h-desc">騎乗。【単穴警戒▲】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">
@@ -6044,7 +6121,7 @@
           <td class="num-cell"><span class="waku-badge waku-2">2</span></td>
           <td class="info-cell">
             <div class="h-name">ベラジオソノダヒメ</div>
-            <div class="h-desc">騎乗。【指数注目☆】スピード指数上位の伏兵。コース替わりで激走警戒。</div>
+            <div class="h-desc">騎乗。【指数注目☆】コース適性高く展開ひとつで連下浮上警戒。</div>
           </td>
         </tr>
         <tr class="horse-row">

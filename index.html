@@ -20,6 +20,7 @@
       --accent-gold-light: #fef3c7;
       --accent-blue: #3b82f6;
       --accent-red: #ef4444;
+      --accent-green: #10b981;
       --border-color: #24304f;
     }
 
@@ -71,6 +72,47 @@
       color: var(--text-sub);
       font-weight: 500;
     }
+
+    /* 本日のリアルタイム収支サマリーカード */
+    .summary-card {
+      max-width: 600px;
+      margin: 12px auto 0;
+      padding: 0 12px;
+    }
+
+    .summary-inner {
+      background: linear-gradient(135deg, #132338 0%, #0d1829 100%);
+      border: 1px solid #1e3a8a;
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .sum-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .sum-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+
+    .sum-item {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px 4px;
+      border-radius: 8px;
+    }
+
+    .sum-lbl { font-size: 10px; color: var(--text-sub); }
+    .sum-val { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-top: 2px; }
 
     .track-nav-wrapper {
       background: var(--bg-main);
@@ -381,6 +423,7 @@
       border: 1px dashed var(--accent-gold);
       border-radius: 10px;
       padding: 12px;
+      margin-bottom: 12px;
     }
 
     .kaime-title {
@@ -420,7 +463,76 @@
       font-size: 13px;
     }
 
-    /* 荒れ予想度バッジ（AI合議連動） */
+    /* 的中・収支ボックス */
+    .result-box {
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 10px;
+    }
+
+    .result-hit {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+    }
+    .result-miss {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .result-waiting {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .res-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .res-badge-hit {
+      background: #10b981;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .res-badge-miss {
+      background: #64748b;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .res-badge-waiting {
+      background: rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .res-profit {
+      font-size: 12px;
+      color: #fff;
+    }
+    .res-profit strong {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      color: var(--accent-gold);
+    }
+
+    .res-body {
+      font-size: 11px;
+      color: #86efac;
+      margin-top: 6px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    /* 荒れ予想度バッジ */
     .aredo-badge {
       display: inline-block;
       font-size: 11px;
@@ -599,6 +711,30 @@
     <div class="date-info">2026年11月9日（月） 川崎・盛岡・名古屋・佐賀 | 回収率・期待値重視 AI合議モデル</div>
   </header>
 
+  <!-- リアルタイム収支サマリーカード -->
+  <div class="summary-card">
+    <div class="summary-inner">
+      <div class="sum-title">
+        <span>📊 本日のリアルタイム成績（全レース各100円購入）</span>
+        <span style="font-size:10px; color:#9ca3af;">終了 15/48R</span>
+      </div>
+      <div class="sum-grid">
+        <div class="sum-item">
+          <div class="sum-lbl">的中率</div>
+          <div class="sum-val" style="color: #60a5fa;">8 / 15 (53.3%)</div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-lbl">回収率</div>
+          <div class="sum-val" style="color: #10b981;">109.9%</div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-lbl">本日収支</div>
+          <div class="sum-val" style="color: #10b981;">+1,190円</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 競馬場切り替えタブ -->
   <div class="track-nav-wrapper">
     <div class="track-tabs">
@@ -646,7 +782,7 @@
         <div class="race-tabs">
           
           <button class="race-tab active" id="rtab-kawasaki-1" onclick="switchRace('kawasaki', 1)">
-            1R <span style="font-size:10px; opacity:0.8;">15:00</span>
+            1R <span style="font-size:10px; opacity:0.8;">15:00</span> ✕
           </button>
           <button class="race-tab " id="rtab-kawasaki-2" onclick="switchRace('kawasaki', 2)">
             2R <span style="font-size:10px; opacity:0.8;">15:30</span>
@@ -673,13 +809,13 @@
             9R <span style="font-size:10px; opacity:0.8;">19:05</span>
           </button>
           <button class="race-tab " id="rtab-kawasaki-10" onclick="switchRace('kawasaki', 10)">
-            10R <span style="font-size:10px; opacity:0.8;">19:40</span> ★
+            10R <span style="font-size:10px; opacity:0.8;">19:40</span>
           </button>
           <button class="race-tab " id="rtab-kawasaki-11" onclick="switchRace('kawasaki', 11)">
-            11R <span style="font-size:10px; opacity:0.8;">20:15</span> ★
+            11R <span style="font-size:10px; opacity:0.8;">20:15</span>
           </button>
           <button class="race-tab " id="rtab-kawasaki-12" onclick="switchRace('kawasaki', 12)">
-            12R <span style="font-size:10px; opacity:0.8;">20:50</span> ★
+            12R <span style="font-size:10px; opacity:0.8;">20:50</span>
           </button>
         </div>
       </div>
@@ -689,7 +825,7 @@
     <div class="race-card active" id="card-kawasaki-1">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>1R 3歳3</h2>
             <span class="race-meta-dist">ダ1400m（左） | 9頭立て</span>
@@ -704,7 +840,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">9頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -755,7 +891,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -767,13 +903,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 2R Card -->
     <div class="race-card " id="card-kawasaki-2">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>2R みずほ賞(2歳)</h2>
             <span class="race-meta-dist">ダ900m（左） | 7頭立て</span>
@@ -788,7 +933,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ900m戦</span>
         <span class="meta-pill">7頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -839,7 +984,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -851,13 +996,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>15:30</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 3R Card -->
     <div class="race-card " id="card-kawasaki-3">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>3R 未勝利(2歳)</h2>
             <span class="race-meta-dist">ダ1400m（左） | 8頭立て</span>
@@ -872,7 +1026,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">8頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -923,7 +1077,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -935,13 +1089,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:00</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 4R Card -->
     <div class="race-card " id="card-kawasaki-4">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>4R オオカマキリ賞(2歳)</h2>
             <span class="race-meta-dist">ダ1500m（左） | 12頭立て</span>
@@ -956,7 +1119,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1007,7 +1170,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1019,13 +1182,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:30</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 5R Card -->
     <div class="race-card " id="card-kawasaki-5">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>5R C2一二</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て</span>
@@ -1040,7 +1212,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1091,7 +1263,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1103,13 +1275,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:00</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 6R Card -->
     <div class="race-card " id="card-kawasaki-6">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>6R C2一二</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て</span>
@@ -1124,7 +1305,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1175,7 +1356,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1187,13 +1368,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:30</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 7R Card -->
     <div class="race-card " id="card-kawasaki-7">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>7R 雷鼓賞(C2)</h2>
             <span class="race-meta-dist">ダ900m（左） | 12頭立て</span>
@@ -1208,7 +1398,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ900m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1259,7 +1449,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1271,13 +1461,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:00</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 8R Card -->
     <div class="race-card " id="card-kawasaki-8">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>8R 木犀賞(C1)</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て</span>
@@ -1292,7 +1491,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1343,7 +1542,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1355,13 +1554,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:30</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 9R Card -->
     <div class="race-card " id="card-kawasaki-9">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>9R 金剛賞(C1)</h2>
             <span class="race-meta-dist">ダ900m（左） | 12頭立て</span>
@@ -1376,7 +1584,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ900m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1427,7 +1635,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1439,13 +1647,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>19:05</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 10R Card -->
     <div class="race-card " id="card-kawasaki-10">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>10R シリウス特別(B2B3)</h2>
             <span class="race-meta-dist">ダ2000m（左） | 14頭立て | ★特別競走</span>
@@ -1460,7 +1677,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ2000m戦</span>
         <span class="meta-pill">14頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1511,7 +1728,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1523,13 +1740,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>19:40</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 11R Card -->
     <div class="race-card " id="card-kawasaki-11">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>11R かながわ消費者トラブル未然防止特別(A2B1)</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て | ★メイン注目</span>
@@ -1544,7 +1770,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1595,7 +1821,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1607,13 +1833,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>20:15</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 12R Card -->
     <div class="race-card " id="card-kawasaki-12">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>12R スコッチ賞(C1)</h2>
             <span class="race-meta-dist">ダ1600m（左） | 12頭立て | ★最終逆転</span>
@@ -1628,7 +1863,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1600m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1679,7 +1914,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1691,6 +1926,15 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>20:50</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
       </div>
@@ -1702,25 +1946,25 @@
         <div class="race-tabs">
           
           <button class="race-tab active" id="rtab-morioka-1" onclick="switchRace('morioka', 1)">
-            1R <span style="font-size:10px; opacity:0.8;">11:45</span>
+            1R <span style="font-size:10px; opacity:0.8;">11:45</span> 🎯
           </button>
           <button class="race-tab " id="rtab-morioka-2" onclick="switchRace('morioka', 2)">
-            2R <span style="font-size:10px; opacity:0.8;">12:20</span>
+            2R <span style="font-size:10px; opacity:0.8;">12:20</span> ✕
           </button>
           <button class="race-tab " id="rtab-morioka-3" onclick="switchRace('morioka', 3)">
-            3R <span style="font-size:10px; opacity:0.8;">12:55</span>
+            3R <span style="font-size:10px; opacity:0.8;">12:55</span> 🎯
           </button>
           <button class="race-tab " id="rtab-morioka-4" onclick="switchRace('morioka', 4)">
-            4R <span style="font-size:10px; opacity:0.8;">13:30</span>
+            4R <span style="font-size:10px; opacity:0.8;">13:30</span> 🎯
           </button>
           <button class="race-tab " id="rtab-morioka-5" onclick="switchRace('morioka', 5)">
-            5R <span style="font-size:10px; opacity:0.8;">14:05</span>
+            5R <span style="font-size:10px; opacity:0.8;">14:05</span> ✕
           </button>
           <button class="race-tab " id="rtab-morioka-6" onclick="switchRace('morioka', 6)">
-            6R <span style="font-size:10px; opacity:0.8;">14:40</span>
+            6R <span style="font-size:10px; opacity:0.8;">14:40</span> 🎯
           </button>
           <button class="race-tab " id="rtab-morioka-7" onclick="switchRace('morioka', 7)">
-            7R <span style="font-size:10px; opacity:0.8;">15:15</span>
+            7R <span style="font-size:10px; opacity:0.8;">15:15</span> ✕
           </button>
           <button class="race-tab " id="rtab-morioka-8" onclick="switchRace('morioka', 8)">
             8R <span style="font-size:10px; opacity:0.8;">15:50</span>
@@ -1729,13 +1973,13 @@
             9R <span style="font-size:10px; opacity:0.8;">16:25</span>
           </button>
           <button class="race-tab " id="rtab-morioka-10" onclick="switchRace('morioka', 10)">
-            10R <span style="font-size:10px; opacity:0.8;">17:05</span> ★
+            10R <span style="font-size:10px; opacity:0.8;">17:05</span>
           </button>
           <button class="race-tab " id="rtab-morioka-11" onclick="switchRace('morioka', 11)">
-            11R <span style="font-size:10px; opacity:0.8;">17:40</span> ★
+            11R <span style="font-size:10px; opacity:0.8;">17:40</span>
           </button>
           <button class="race-tab " id="rtab-morioka-12" onclick="switchRace('morioka', 12)">
-            12R <span style="font-size:10px; opacity:0.8;">18:15</span> ★
+            12R <span style="font-size:10px; opacity:0.8;">18:15</span>
           </button>
         </div>
       </div>
@@ -1745,7 +1989,7 @@
     <div class="race-card active" id="card-morioka-1">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>1R C2</h2>
             <span class="race-meta-dist">ダ1000m（左） | 12頭立て</span>
@@ -1760,7 +2004,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1000m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1811,7 +2055,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1823,13 +2067,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>+120円</strong>（払戻 920円 / 各100円）</span>
+              </div>
+              <div class="res-body">ワイド 9-11（430円） / ワイド 4-11（490円）</div>
+            </div>
     </div>
     
     <!-- 2R Card -->
     <div class="race-card " id="card-morioka-2">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>2R C2</h2>
             <span class="race-meta-dist">ダ1000m（左） | 12頭立て</span>
@@ -1844,7 +2098,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1000m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1895,7 +2149,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1907,13 +2161,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 3R Card -->
     <div class="race-card " id="card-morioka-3">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>3R C2七組</h2>
             <span class="race-meta-dist">ダ1400m（左） | 11頭立て</span>
@@ -1928,7 +2191,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -1979,7 +2242,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -1991,13 +2254,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>-450円</strong>（払戻 350円 / 各100円）</span>
+              </div>
+              <div class="res-body">ワイド 7-9（180円） / ワイド 6-7（170円）</div>
+            </div>
     </div>
     
     <!-- 4R Card -->
     <div class="race-card " id="card-morioka-4">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>4R C2六組</h2>
             <span class="race-meta-dist">ダ1400m（左） | 11頭立て</span>
@@ -2012,7 +2285,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2063,7 +2336,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2075,13 +2348,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>+3,850円</strong>（払戻 4,650円 / 各100円）</span>
+              </div>
+              <div class="res-body">馬連 6-7（3,650円） / ワイド 6-7（1,000円）</div>
+            </div>
     </div>
     
     <!-- 5R Card -->
     <div class="race-card " id="card-morioka-5">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>5R C2五組</h2>
             <span class="race-meta-dist">ダ1400m（左） | 10頭立て</span>
@@ -2096,7 +2379,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">10頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2147,7 +2430,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2159,13 +2442,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 6R Card -->
     <div class="race-card " id="card-morioka-6">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>6R C1</h2>
             <span class="race-meta-dist">ダ1000m（左） | 12頭立て</span>
@@ -2180,7 +2472,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1000m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2231,7 +2523,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2243,13 +2535,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>+2,640円</strong>（払戻 3,440円 / 各100円）</span>
+              </div>
+              <div class="res-body">馬連 10-12（620円） / ワイド 10-12（290円） / ワイド 3-12（2,530円）</div>
+            </div>
     </div>
     
     <!-- 7R Card -->
     <div class="race-card " id="card-morioka-7">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>7R C1</h2>
             <span class="race-meta-dist">ダ1000m（左） | 12頭立て</span>
@@ -2264,7 +2566,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1000m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2315,7 +2617,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2327,13 +2629,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 8R Card -->
     <div class="race-card " id="card-morioka-8">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>8R C1</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て</span>
@@ -2348,7 +2659,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2399,7 +2710,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2411,13 +2722,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>15:50</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 9R Card -->
     <div class="race-card " id="card-morioka-9">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>9R C1</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て</span>
@@ -2432,7 +2752,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2483,7 +2803,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2495,13 +2815,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:25</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 10R Card -->
     <div class="race-card " id="card-morioka-10">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>10R 社台スタリオンステーション特別(C1)</h2>
             <span class="race-meta-dist">ダ1400m（左） | 12頭立て | ★特別競走</span>
@@ -2516,7 +2845,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2567,7 +2896,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2579,13 +2908,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:05</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 11R Card -->
     <div class="race-card " id="card-morioka-11">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>11R 晩秋特別(A)</h2>
             <span class="race-meta-dist">ダ1600m（左） | 11頭立て | ★メイン注目</span>
@@ -2600,7 +2938,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1600m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2651,7 +2989,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2663,13 +3001,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:40</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 12R Card -->
     <div class="race-card " id="card-morioka-12">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>12R 霜月特別(A)</h2>
             <span class="race-meta-dist">ダ1600m（左） | 12頭立て | ★最終逆転</span>
@@ -2684,7 +3031,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1600m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2735,7 +3082,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2747,6 +3094,15 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:15</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
       </div>
@@ -2758,19 +3114,19 @@
         <div class="race-tabs">
           
           <button class="race-tab active" id="rtab-nagoya-1" onclick="switchRace('nagoya', 1)">
-            1R <span style="font-size:10px; opacity:0.8;">12:40</span>
+            1R <span style="font-size:10px; opacity:0.8;">12:40</span> 🎯
           </button>
           <button class="race-tab " id="rtab-nagoya-2" onclick="switchRace('nagoya', 2)">
-            2R <span style="font-size:10px; opacity:0.8;">13:10</span>
+            2R <span style="font-size:10px; opacity:0.8;">13:10</span> 🎯
           </button>
           <button class="race-tab " id="rtab-nagoya-3" onclick="switchRace('nagoya', 3)">
-            3R <span style="font-size:10px; opacity:0.8;">13:45</span>
+            3R <span style="font-size:10px; opacity:0.8;">13:45</span> 🎯
           </button>
           <button class="race-tab " id="rtab-nagoya-4" onclick="switchRace('nagoya', 4)">
-            4R <span style="font-size:10px; opacity:0.8;">14:20</span>
+            4R <span style="font-size:10px; opacity:0.8;">14:20</span> ✕
           </button>
           <button class="race-tab " id="rtab-nagoya-5" onclick="switchRace('nagoya', 5)">
-            5R <span style="font-size:10px; opacity:0.8;">14:50</span>
+            5R <span style="font-size:10px; opacity:0.8;">14:50</span> ✕
           </button>
           <button class="race-tab " id="rtab-nagoya-6" onclick="switchRace('nagoya', 6)">
             6R <span style="font-size:10px; opacity:0.8;">15:25</span>
@@ -2785,13 +3141,13 @@
             9R <span style="font-size:10px; opacity:0.8;">17:15</span>
           </button>
           <button class="race-tab " id="rtab-nagoya-10" onclick="switchRace('nagoya', 10)">
-            10R <span style="font-size:10px; opacity:0.8;">17:50</span> ★
+            10R <span style="font-size:10px; opacity:0.8;">17:50</span>
           </button>
           <button class="race-tab " id="rtab-nagoya-11" onclick="switchRace('nagoya', 11)">
-            11R <span style="font-size:10px; opacity:0.8;">18:20</span> ★
+            11R <span style="font-size:10px; opacity:0.8;">18:20</span>
           </button>
           <button class="race-tab " id="rtab-nagoya-12" onclick="switchRace('nagoya', 12)">
-            12R <span style="font-size:10px; opacity:0.8;">18:55</span> ★
+            12R <span style="font-size:10px; opacity:0.8;">18:55</span>
           </button>
         </div>
       </div>
@@ -2801,7 +3157,7 @@
     <div class="race-card active" id="card-nagoya-1">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>1R C29組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 11頭立て</span>
@@ -2816,7 +3172,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2867,7 +3223,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2879,13 +3235,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>+500円</strong>（払戻 1,300円 / 各100円）</span>
+              </div>
+              <div class="res-body">馬連 2-9（710円） / ワイド 2-9（270円） / ワイド 2-5（320円）</div>
+            </div>
     </div>
     
     <!-- 2R Card -->
     <div class="race-card " id="card-nagoya-2">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>2R C28組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 11頭立て</span>
@@ -2900,7 +3266,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -2951,7 +3317,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -2963,13 +3329,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>-60円</strong>（払戻 740円 / 各100円）</span>
+              </div>
+              <div class="res-body">馬連 2-11（290円） / ワイド 2-11（150円） / ワイド 2-4（300円）</div>
+            </div>
     </div>
     
     <!-- 3R Card -->
     <div class="race-card " id="card-nagoya-3">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>3R C27組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 11頭立て</span>
@@ -2984,7 +3360,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3035,7 +3411,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3047,13 +3423,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>-80円</strong>（払戻 720円 / 各100円）</span>
+              </div>
+              <div class="res-body">ワイド 3-8（400円） / 馬連 3-7（190円） / ワイド 3-7（130円）</div>
+            </div>
     </div>
     
     <!-- 4R Card -->
     <div class="race-card " id="card-nagoya-4">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>4R 2歳疾風戦</h2>
             <span class="race-meta-dist">ダ920m（右） | 10頭立て</span>
@@ -3068,7 +3454,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ920m戦</span>
         <span class="meta-pill">10頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3119,7 +3505,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3131,13 +3517,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 5R Card -->
     <div class="race-card " id="card-nagoya-5">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>5R 2歳4組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 11頭立て</span>
@@ -3152,7 +3547,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3203,7 +3598,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3215,13 +3610,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 6R Card -->
     <div class="race-card " id="card-nagoya-6">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>6R 創太・智惠 結婚記念(C)</h2>
             <span class="race-meta-dist">ダ1500m（右） | 12頭立て</span>
@@ -3236,7 +3640,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3287,7 +3691,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3299,13 +3703,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>15:25</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 7R Card -->
     <div class="race-card " id="card-nagoya-7">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>7R C25組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 12頭立て</span>
@@ -3320,7 +3733,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3371,7 +3784,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3383,13 +3796,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:05</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 8R Card -->
     <div class="race-card " id="card-nagoya-8">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>8R C24組</h2>
             <span class="race-meta-dist">ダ1500m（右） | 12頭立て</span>
@@ -3404,7 +3826,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3455,7 +3877,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3467,13 +3889,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:40</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 9R Card -->
     <div class="race-card " id="card-nagoya-9">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>9R メンカリナン特別(B)</h2>
             <span class="race-meta-dist">ダ1700m（右） | 11頭立て</span>
@@ -3488,7 +3919,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1700m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3539,7 +3970,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3551,13 +3982,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:15</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 10R Card -->
     <div class="race-card " id="card-nagoya-10">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>10R レディス・カペラ特別(B)</h2>
             <span class="race-meta-dist">ダ1500m（右） | 10頭立て | ★特別競走</span>
@@ -3572,7 +4012,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">10頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3623,7 +4063,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3635,13 +4075,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:50</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 11R Card -->
     <div class="race-card " id="card-nagoya-11">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>11R ぎょしゃ座特別(B)</h2>
             <span class="race-meta-dist">ダ1400m（右） | 11頭立て | ★メイン注目</span>
@@ -3656,7 +4105,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3707,7 +4156,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3719,13 +4168,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:20</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 12R Card -->
     <div class="race-card " id="card-nagoya-12">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>12R 金シャチ最終戦(C)</h2>
             <span class="race-meta-dist">ダ1500m（右） | 12頭立て | ★最終逆転</span>
@@ -3740,7 +4198,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1500m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3791,7 +4249,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3803,6 +4261,15 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:55</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
       </div>
@@ -3814,10 +4281,10 @@
         <div class="race-tabs">
           
           <button class="race-tab active" id="rtab-saga-1" onclick="switchRace('saga', 1)">
-            1R <span style="font-size:10px; opacity:0.8;">14:35</span>
+            1R <span style="font-size:10px; opacity:0.8;">14:35</span> 🎯
           </button>
           <button class="race-tab " id="rtab-saga-2" onclick="switchRace('saga', 2)">
-            2R <span style="font-size:10px; opacity:0.8;">15:10</span>
+            2R <span style="font-size:10px; opacity:0.8;">15:10</span> ✕
           </button>
           <button class="race-tab " id="rtab-saga-3" onclick="switchRace('saga', 3)">
             3R <span style="font-size:10px; opacity:0.8;">15:45</span>
@@ -3841,13 +4308,13 @@
             9R <span style="font-size:10px; opacity:0.8;">19:00</span>
           </button>
           <button class="race-tab " id="rtab-saga-10" onclick="switchRace('saga', 10)">
-            10R <span style="font-size:10px; opacity:0.8;">19:30</span> ★
+            10R <span style="font-size:10px; opacity:0.8;">19:30</span>
           </button>
           <button class="race-tab " id="rtab-saga-11" onclick="switchRace('saga', 11)">
-            11R <span style="font-size:10px; opacity:0.8;">20:05</span> ★
+            11R <span style="font-size:10px; opacity:0.8;">20:05</span>
           </button>
           <button class="race-tab " id="rtab-saga-12" onclick="switchRace('saga', 12)">
-            12R <span style="font-size:10px; opacity:0.8;">20:40</span> ★
+            12R <span style="font-size:10px; opacity:0.8;">20:40</span>
           </button>
         </div>
       </div>
@@ -3857,7 +4324,7 @@
     <div class="race-card active" id="card-saga-1">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>1R 2歳ー5組</h2>
             <span class="race-meta-dist">ダ1300m（右） | 9頭立て</span>
@@ -3872,7 +4339,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1300m戦</span>
         <span class="meta-pill">9頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -3923,7 +4390,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -3935,13 +4402,23 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-hit">
+              <div class="res-head">
+                <span class="res-badge-hit">🎯 的中！</span>
+                <span class="res-profit">収支 <strong>+270円</strong>（払戻 1,070円 / 各100円）</span>
+              </div>
+              <div class="res-body">ワイド 7-8（150円） / ワイド 2-7（920円）</div>
+            </div>
     </div>
     
     <!-- 2R Card -->
     <div class="race-card " id="card-saga-2">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>2R 2歳ー4組</h2>
             <span class="race-meta-dist">ダ1300m（右） | 8頭立て</span>
@@ -3956,7 +4433,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1300m戦</span>
         <span class="meta-pill">8頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4007,7 +4484,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4019,13 +4496,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-800円</strong>（各100円購入）</span>
+              </div>
+            </div>
     </div>
     
     <!-- 3R Card -->
     <div class="race-card " id="card-saga-3">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>3R C2ー13組</h2>
             <span class="race-meta-dist">ダ1400m（右） | 11頭立て</span>
@@ -4040,7 +4526,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4091,7 +4577,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4103,13 +4589,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>15:45</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 4R Card -->
     <div class="race-card " id="card-saga-4">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>4R 函館馬主協会来場記念(C2)</h2>
             <span class="race-meta-dist">ダ1400m（右） | 12頭立て</span>
@@ -4124,7 +4619,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4175,7 +4670,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4187,13 +4682,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:20</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 5R Card -->
     <div class="race-card " id="card-saga-5">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>5R C2ー11組</h2>
             <span class="race-meta-dist">ダ1400m（右） | 12頭立て</span>
@@ -4208,7 +4712,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4259,7 +4763,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4271,13 +4775,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>16:55</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 6R Card -->
     <div class="race-card " id="card-saga-6">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>6R C1ー7組</h2>
             <span class="race-meta-dist">ダ1400m（右） | 8頭立て</span>
@@ -4292,7 +4805,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">8頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4343,7 +4856,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4355,13 +4868,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:25</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 7R Card -->
     <div class="race-card " id="card-saga-7">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>7R C1ー6組</h2>
             <span class="race-meta-dist">ダ1300m（右） | 10頭立て</span>
@@ -4376,7 +4898,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1300m戦</span>
         <span class="meta-pill">10頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4427,7 +4949,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4439,13 +4961,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>17:55</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 8R Card -->
     <div class="race-card " id="card-saga-8">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>8R C1ー5組</h2>
             <span class="race-meta-dist">ダ1300m（右） | 9頭立て</span>
@@ -4460,7 +4991,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1300m戦</span>
         <span class="meta-pill">9頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4511,7 +5042,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4523,13 +5054,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>18:25</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 9R Card -->
     <div class="race-card " id="card-saga-9">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>9R ハナキリン賞</h2>
             <span class="race-meta-dist">ダ1400m（右） | 10頭立て</span>
@@ -4544,7 +5084,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">10頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4595,7 +5135,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4607,13 +5147,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>19:00</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 10R Card -->
     <div class="race-card " id="card-saga-10">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>10R SAGAリベンジャーズダッシュ1組(C2)</h2>
             <span class="race-meta-dist">ダ900m（右） | 11頭立て | ★特別競走</span>
@@ -4628,7 +5177,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ900m戦</span>
         <span class="meta-pill">11頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4679,7 +5228,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4691,13 +5240,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>19:30</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 11R Card -->
     <div class="race-card " id="card-saga-11">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準（中穴警戒）</span>
+          <span class="aredo-badge aredo-normal">⚖️ 荒れ予想：標準</span>
           <div class="race-num-title">
             <h2>11R 錦秋特別(B)</h2>
             <span class="race-meta-dist">ダ1860m（右） | 12頭立て | ★メイン注目</span>
@@ -4712,7 +5270,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1860m戦</span>
         <span class="meta-pill">12頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4763,7 +5321,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4775,13 +5333,22 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>20:05</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
     <!-- 12R Card -->
     <div class="race-card " id="card-saga-12">
       <div class="card-header">
         <div>
-          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実（本命党推奨）</span>
+          <span class="aredo-badge aredo-solid">🎯 荒れ予想：堅実</span>
           <div class="race-num-title">
             <h2>12R SAGAリベFEVER14(C2)</h2>
             <span class="race-meta-dist">ダ1400m（右） | 14頭立て | ★最終逆転</span>
@@ -4796,7 +5363,7 @@
       <div class="race-meta-pills">
         <span class="meta-pill">ダダ1400m戦</span>
         <span class="meta-pill">14頭立て</span>
-        <span class="meta-pill">馬連・ワイド推奨</span>
+        <span class="meta-pill">馬連・ワイド各100円</span>
       </div>
 
       <table class="prediction-table">
@@ -4847,7 +5414,7 @@
 
       <!-- 買い目ブロック -->
       <div class="kaime-box">
-        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド）</div>
+        <div class="kaime-title">🎯 推奨買い目（馬連・ワイド各4点 / 計800円）</div>
         <div class="kaime-list">
           <div class="kaime-item">
             <span class="k-type">馬連</span>
@@ -4859,6 +5426,15 @@
           </div>
         </div>
       </div>
+
+      <!-- 的中・収支結果ブロック -->
+      
+        <div class="result-box result-waiting">
+          <div class="res-head">
+            <span class="res-badge-waiting">⏳ 未発走</span>
+            <span class="res-profit">発走予定 <strong>20:40</strong>（各100円 8点＝800円）</span>
+          </div>
+        </div>
     </div>
     
       </div>

@@ -3,573 +3,4499 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>おるの地方競馬ナビ | 南関ナイター・全国地方競馬 毎日データ攻略</title>
-  <meta name="description" content="平日ナイター競馬を完全攻略！大井・川崎・船橋・浦和の南関4場から門別・園田・高知まで、地方競馬の毎日レース速報・コース傾向・おるの渾身予想をお届けする地方競馬特化型データメディアです。">
+  <title>おるの地方競馬ナビ | 川崎・盛岡・名古屋・佐賀 全48R 完全攻略予想</title>
+  <meta name="description" content="2026年11月9日(月) 地方競馬全48レース（川崎・盛岡・名古屋・佐賀）のAI完全予想・買い目。netkeibaデータ連動・回収率重視モデル。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0A0E17;
-      --bg-card: #121826;
-      --bg-card-hover: #192235;
-      --bg-tag: #1B2438;
-      --border-color: #232F48;
-      --text-main: #FFFFFF;
-      --text-muted: #8EA0BF;
-      --accent-orange: #FF6D00;
-      --accent-orange-dim: rgba(255, 109, 0, 0.12);
-      --accent-gold: #FFD700;
-      --accent-cyan: #00E5FF;
-      --badge-night: #7C4DFF;
-      --badge-main: #FF3366;
+      --bg-main: #0b0f19;
+      --bg-card: #151d30;
+      --bg-sub: #1e2942;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-gold: #f59e0b;
+      --accent-gold-light: #fef3c7;
+      --accent-green: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-red: #ef4444;
+      --border-color: #26334d;
+      --font-num: 'Oswald', sans-serif;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
       font-family: 'Noto Sans JP', sans-serif;
-      line-height: 1.7;
-      padding-bottom: 70px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 90px;
     }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* Header */
+    /* ヘッダー */
     header {
-      background: rgba(10, 14, 23, 0.95);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(135deg, #0d1527 0%, #172544 100%);
       border-bottom: 1px solid var(--border-color);
+      padding: 20px 16px 14px;
+      text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 14px 0;
+      backdrop-filter: blur(10px);
     }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, rgba(255, 109, 0, 0.25), rgba(124, 77, 255, 0.25));
-      border: 1px solid var(--accent-orange);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    .brand-title {
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-    }
-
-    .brand-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      color: var(--accent-orange);
-      letter-spacing: 1.5px;
-      display: block;
-      margin-top: -2px;
-    }
-
-    .header-badge {
-      font-size: 11px;
-      background: var(--bg-tag);
-      border: 1px solid var(--border-color);
-      padding: 5px 12px;
-      border-radius: 20px;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    /* Concept Banner */
-    .concept-banner {
-      background: linear-gradient(135deg, #172138 0%, #0F1424 100%);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin: 18px 0;
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .concept-icon {
-      font-size: 32px;
-      flex-shrink: 0;
-    }
-
-    .concept-title {
-      font-size: 14px;
-      font-weight: 900;
-      color: var(--accent-gold);
-      margin-bottom: 2px;
-    }
-
-    .concept-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Ad Container */
-    .ad-container {
-      margin: 22px 0;
-      text-align: center;
-    }
-    .ad-label {
-      display: block;
-      font-size: 9px;
-      color: #556275;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    /* Section Title */
-    .section-title {
-      font-size: 16px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 28px 0 14px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--accent-orange);
-      letter-spacing: -0.2px;
-    }
-
-    /* Race Card */
-    .race-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 18px 18px;
-      margin-bottom: 14px;
-    }
-
-    .race-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .race-badge-night {
-      background: var(--badge-night);
+    .site-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6);
       color: #fff;
-      font-size: 10px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    .race-badge-day {
-      background: var(--bg-tag);
-      color: var(--accent-cyan);
-      font-size: 10px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid var(--border-color);
-    }
-
-    .race-time {
       font-size: 11px;
-      color: var(--accent-gold);
       font-weight: 700;
-    }
-
-    .race-title {
-      font-size: 16px;
-      font-weight: 900;
-      color: #fff;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
       margin-bottom: 6px;
     }
 
-    .race-conditions {
+    h1 {
+      font-size: 19px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .date-info {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    /* 競馬場選択タブ */
+    .track-nav-wrapper {
+      background: #111827;
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 12px;
+      position: sticky;
+      top: 74px;
+      z-index: 95;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .track-nav-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .track-tabs {
+      display: inline-flex;
+      gap: 8px;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .track-tab {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 8px 10px;
+      color: var(--text-sub);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 82px;
+      transition: all 0.2s ease;
+    }
+
+    .track-tab .t-icon {
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .track-tab .t-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .track-tab .t-badge {
+      font-size: 9px;
+      color: #a5b4fc;
+      margin-top: 1px;
+    }
+
+    .track-tab.active {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-color: #818cf8;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .track-tab.active .t-name {
+      color: #fff;
+    }
+
+    .track-tab.active .t-badge {
+      color: #fef08a;
+    }
+
+    /* 広告バナーエリア（ヘッダー下） */
+    .ad-container {
+      max-width: 800px;
+      margin: 14px auto;
+      padding: 0 16px;
+    }
+
+    .ad-card {
+      background: linear-gradient(90deg, #1e1b4b, #31104b);
+      border: 1px solid #6366f1;
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    }
+
+    .ad-badge {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-size: 9px;
+      color: #a5b4fc;
+      opacity: 0.7;
+    }
+
+    .ad-content h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 2px;
+    }
+
+    .ad-content p {
+      font-size: 11px;
+      color: #e0e7ff;
+    }
+
+    .ad-btn {
+      background: #f59e0b;
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
+
+    /* レース選択タブナビゲーション */
+    .track-section {
+      display: none;
+    }
+
+    .track-section.active {
+      display: block;
+    }
+
+    .tabs-wrapper {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 138px;
+      z-index: 90;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 12px;
+    }
+
+    .tabs-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .race-tabs {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .race-tab {
+      background: var(--bg-sub);
+      color: var(--text-sub);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 58px;
+      transition: all 0.2s ease;
+    }
+
+    .race-tab .r-num {
+      font-family: var(--font-num);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .race-tab .r-time {
+      font-size: 9px;
+      margin-top: 2px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .race-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      border-color: #f59e0b;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .race-tab.special {
+      border-color: #ec4899;
+      position: relative;
+    }
+    .race-tab.special::after {
+      content: "★";
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      font-size: 10px;
+      color: #ec4899;
+    }
+
+    /* メインコンテナ */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* レース詳細カード */
+    .race-card {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 20px;
+    }
+
+    .race-card.active {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* レースヘッダー */
+    .card-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .r-title-area h2 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .r-badge {
+      background: #f59e0b;
+      color: #000;
+      font-family: var(--font-num);
+      font-size: 15px;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .r-subtitle {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    .r-meta {
+      text-align: right;
+    }
+
+    .r-meta .post-time {
+      font-family: var(--font-num);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .r-meta .cond {
       font-size: 11px;
       color: var(--text-muted);
+    }
+
+    /* 印と推奨馬テーブル */
+    .horses-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      margin-bottom: 18px;
+    }
+
+    .horse-row {
+      background: var(--bg-sub);
+      border-radius: 8px;
+    }
+
+    .horse-row td {
+      padding: 10px 8px;
+      vertical-align: middle;
+    }
+
+    .mark-cell {
+      width: 44px;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .mark-badge {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 15px;
+      border-radius: 6px;
+    }
+
+    .mark-honmei { background: #ef4444; color: #fff; }
+    .mark-taiko { background: #3b82f6; color: #fff; }
+    .mark-tanana { background: #10b981; color: #fff; }
+    .mark-tokuchu { background: #f59e0b; color: #000; }
+    .mark-osae { background: #6b7280; color: #fff; }
+
+    .num-cell {
+      width: 38px;
+      text-align: center;
+      font-family: var(--font-num);
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .info-cell {
+      padding-right: 12px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .h-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .h-desc {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    /* 買い目エリア */
+    .bets-area {
+      background: #0f172a;
+      border: 1px dashed var(--accent-gold);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .bets-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-gold);
       margin-bottom: 10px;
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 6px;
     }
 
-    .race-point-box {
-      background: var(--bg-main);
-      border-left: 3px solid var(--accent-orange);
-      padding: 10px 12px;
-      border-radius: 4px;
+    .bets-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bet-item {
+      display: flex;
       font-size: 12px;
-      color: #D1D5DB;
-      line-height: 1.6;
+      background: var(--bg-card);
+      padding: 8px 12px;
+      border-radius: 6px;
+      align-items: center;
     }
 
-    /* Course Grid */
-    .course-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 14px 0;
-    }
-    @media (max-width: 480px) {
-      .course-grid {
-        grid-template-columns: 1fr;
-      }
+    .bet-type {
+      font-weight: 700;
+      color: var(--accent-cyan);
+      width: 88px;
+      flex-shrink: 0;
     }
 
-    .course-card {
+    .bet-nums {
+      font-family: var(--font-num);
+      font-size: 14px;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+
+    /* インフィード広告 & AdMax */
+    .banner-ad-box {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 14px;
+      padding: 16px;
+      text-align: center;
+      margin: 20px 0;
     }
 
-    .course-name {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--accent-cyan);
-      margin-bottom: 4px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .course-sub {
+    .ad-label-tag {
+      display: block;
       font-size: 10px;
       color: var(--text-muted);
-    }
-
-    .course-desc {
-      font-size: 11px;
-      color: #D1D5DB;
-      line-height: 1.5;
-      margin-top: 6px;
-    }
-
-    /* Prediction Slot */
-    .prediction-slot {
-      background: linear-gradient(135deg, rgba(255, 109, 0, 0.08) 0%, rgba(20, 25, 35, 0.95) 100%);
-      border: 2px solid var(--accent-orange);
-      border-radius: 16px;
-      padding: 22px 20px;
-      margin: 30px 0;
-      position: relative;
-      box-shadow: 0 8px 24px rgba(255, 109, 0, 0.1);
-    }
-
-    .prediction-badge {
-      display: inline-block;
-      background: var(--accent-orange);
-      color: #000;
-      font-size: 11px;
-      font-weight: 900;
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .prediction-heading {
-      font-size: 17px;
-      font-weight: 900;
-      color: #fff;
+      letter-spacing: 0.05em;
       margin-bottom: 8px;
     }
 
-    .prediction-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    /* 相互リンクカード */
+    .portal-link-box {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #fff;
     }
 
-    /* Central Lab Link */
-    .central-link-box {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(0, 230, 118, 0.12));
-      border: 1px solid var(--accent-gold);
-      border-radius: 14px;
-      padding: 16px 18px;
-      margin: 28px 0;
-      text-decoration: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.2s;
+    .portal-link-box:hover {
+      border-color: #64748b;
     }
-    .central-link-title {
+
+    .pl-text h4 {
       font-size: 14px;
-      font-weight: 800;
-      color: #fff;
+      font-weight: 700;
+      color: #38bdf8;
       margin-bottom: 2px;
     }
-    .central-link-sub {
+
+    .pl-text p {
       font-size: 11px;
-      color: var(--accent-gold);
-    }
-    .central-link-arrow {
-      font-size: 18px;
-      color: var(--accent-gold);
+      color: var(--text-sub);
     }
 
-    /* Profile */
-    .profile-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 18px;
-      margin: 32px 0 20px;
-      display: flex;
-      gap: 14px;
-      align-items: center;
+    .pl-btn {
+      background: #0284c7;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
     }
-    .profile-avatar {
-      width: 48px;
-      height: 48px;
+
+    /* Xフォローカード */
+    .x-follow-box {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .xf-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .xf-avatar {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
       border-radius: 50%;
-      background: linear-gradient(135deg, #FF6D00, #7C4DFF);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-    .profile-info {
-      flex: 1;
-    }
-    .profile-name {
+      font-weight: 900;
       font-size: 14px;
-      font-weight: 800;
-      margin-bottom: 2px;
-    }
-    .profile-bio {
-      font-size: 11px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    .x-follow-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #000;
-      color: #fff;
-      border: 1px solid #333;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .x-follow-btn:hover {
-      background: #111;
-      border-color: #555;
+      color: #000;
     }
 
-    footer {
-      text-align: center;
+    .xf-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .xf-text p {
       font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 30px;
-      padding-top: 20px;
+      color: var(--text-sub);
+    }
+
+    .xf-btn {
+      background: #fff;
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* 下部固定馬券投票バー */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--border-color);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .bottom-info p {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bottom-info span {
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    .bottom-btn {
+      background: linear-gradient(90deg, #ec4899, #8b5cf6);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- ヘッダー -->
   <header>
-    <div class="container header-content">
-      <a href="index.html" class="brand">
-        <div class="brand-icon">🌙</div>
-        <div>
-          <span class="brand-title">おるの地方競馬ナビ</span>
-          <span class="brand-sub">CHIHOU KEIBA NAVI</span>
-        </div>
-      </a>
-      <a href="https://oru-keibalab.github.io/keiba-lab/" class="header-badge" target="_blank" rel="noopener noreferrer">
-        🏇 中央競馬ラボはこちら →
-      </a>
-    </div>
+    <div class="site-badge">おるの地方競馬AIラボ × netkeibaデータ分析</div>
+    <h1>地方競馬 全48R 完全攻略予想</h1>
+    <div class="date-info">2026年11月9日（月） 川崎・盛岡・名古屋・佐賀 | 回収率・期待値重視 AI合議モデル</div>
   </header>
 
-  <main class="container">
+  <!-- 競馬場切り替えタブ -->
+  <div class="track-nav-wrapper">
+    <div class="track-tabs">
+      
+    <button class="track-tab active" onclick="switchTrack('kawasaki')" id="tab-kawasaki">
+      <span class="t-icon">🌙</span>
+      <span class="t-name">川崎</span>
+      <span class="t-badge">ナイター</span>
+    </button>
+    <button class="track-tab" onclick="switchTrack('morioka')" id="tab-morioka">
+      <span class="t-icon">🐎</span>
+      <span class="t-name">盛岡</span>
+      <span class="t-badge">岩手競馬</span>
+    </button>
+    <button class="track-tab" onclick="switchTrack('nagoya')" id="tab-nagoya">
+      <span class="t-icon">🏯</span>
+      <span class="t-name">名古屋</span>
+      <span class="t-badge">愛知競馬</span>
+    </button>
+    <button class="track-tab" onclick="switchTrack('saga')" id="tab-saga">
+      <span class="t-icon">🌟</span>
+      <span class="t-name">佐賀</span>
+      <span class="t-badge">ナイター</span>
+    </button>
+    </div>
+  </div>
 
-    <!-- Concept Banner -->
-    <section class="concept-banner">
-      <div class="concept-icon">🏟️</div>
-      <div>
-        <h2 class="concept-title">平日はナイター地方競馬で熱くなれ！</h2>
-        <p class="concept-desc">大井・川崎・船橋・浦和の南関東4場を中心に、平日の毎日レース傾向・コース攻略・勝負予想をお届けする地方競馬特化型ナビです。</p>
+  <!-- スポンサー 楽天競馬枠（全競馬場共通） -->
+  <div class="ad-container">
+    <a href="https://keiba.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" class="ad-card">
+      <span class="ad-badge">スポンサー</span>
+      <div class="ad-content">
+        <h3>【PR】楽天競馬なら川崎・盛岡・名古屋・佐賀の全レース購入可能！</h3>
+        <p>馬券購入で最大10%ポイント還元！即日入金＆全レースライブ中継も無料視聴</p>
       </div>
-    </section>
+      <div class="ad-btn">無料登録</div>
+    </a>
+  </div>
 
-    <!-- 広告枠①: A8.net 320x50 バナー枠 -->
-    <div class="ad-container">
-      <span class="ad-label">SPONSORED / おすすめポイ活で地方馬券代GET</span>
-      <div style="display:flex; justify-content:center; align-items:center; margin-top:4px;">
-        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          <img border="0" width="320" height="50" alt="ポイ活" src="https://www22.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003013000&mc=1" style="max-width:100%; height:auto; display:block;">
-        </a>
-        <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" alt="">
+  <!-- 競馬場別 レースタブ & カードコンテナ -->
+  
+    <div class="track-section active" id="section-kawasaki">
+      <div class="tabs-wrapper">
+        <div class="race-tabs">
+          
+      <button class="race-tab active" onclick="switchRace('kawasaki', 1)" id="tab-kawasaki-1">
+        <span class="r-num">1R</span>
+        <span class="r-time">15:00</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 2)" id="tab-kawasaki-2">
+        <span class="r-num">2R</span>
+        <span class="r-time">15:30</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 3)" id="tab-kawasaki-3">
+        <span class="r-num">3R</span>
+        <span class="r-time">16:00</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 4)" id="tab-kawasaki-4">
+        <span class="r-num">4R</span>
+        <span class="r-time">16:30</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 5)" id="tab-kawasaki-5">
+        <span class="r-num">5R</span>
+        <span class="r-time">17:00</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 6)" id="tab-kawasaki-6">
+        <span class="r-num">6R</span>
+        <span class="r-time">17:30</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 7)" id="tab-kawasaki-7">
+        <span class="r-num">7R</span>
+        <span class="r-time">18:00</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 8)" id="tab-kawasaki-8">
+        <span class="r-num">8R</span>
+        <span class="r-time">18:30</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('kawasaki', 9)" id="tab-kawasaki-9">
+        <span class="r-num">9R</span>
+        <span class="r-time">19:05</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('kawasaki', 10)" id="tab-kawasaki-10">
+        <span class="r-num">10R</span>
+        <span class="r-time">19:40</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('kawasaki', 11)" id="tab-kawasaki-11">
+        <span class="r-num">11R</span>
+        <span class="r-time">20:15</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('kawasaki', 12)" id="tab-kawasaki-12">
+        <span class="r-num">12R</span>
+        <span class="r-time">20:50</span>
+      </button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="race-card active" id="kawasaki-race-1">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">1R</span> 3歳3</h2>
+          <div class="r-subtitle">ダート1400m（左） | 9頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:00 発走</div>
+          <div class="cond">初戦勝負気配</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">サラサペコチャン</div>
+            <div class="h-desc">能力試験・調教「手応え十分」＋厩舎◎。デビュー戦から勝負気配明白。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ゼルノードゥス</div>
+            <div class="h-desc">金沢で1・3・2着の実績最上位。厩舎△で対抗に。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell">
+            <div class="h-name">レトレス</div>
+            <div class="h-desc">櫻井光輔。仕上がり良好で上位争い。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">ニットウカゼ</div>
+            <div class="h-desc">調教↗状態急上昇。既走馬相手で唯一の上積み材料。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell"><div class="h-name">インパラブレ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell"><div class="h-name">ヴィヒタ</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">4 － 7, 5, 8, 9, 3</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">4 － 7, 5 － 7, 5, 8, 9, 3</span></li>
+          <li class="kaime-item"><span class="k-type">3連単</span><span class="k-nums">4 → 7, 5, 8 → 7, 5, 8, 9, 3</span></li>
+        </ul>
+      </div>
+
+      <!-- 川田さんのA8.net提携済み本物アフィリエイト広告（オリスタ：ポケカオリパ） -->
+      <div class="infeed-ad-box">
+        <div class="infeed-ad-label">【PR】レースの合間に運試し！24時間いつでも引けるポケカ専門オンラインオリパ</div>
+        <div class="infeed-ad-content">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4BGH3G+EVUWI+5WG2+5YZ75" rel="nofollow" target="_blank">
+            <img border="0" width="300" height="250" alt="ポケモンカードオリパならオリスタ" src="https://www25.a8.net/svt/bgt?aid=261109132025&wid=001&eno=01&mid=s00000027533001003000&mc=1" style="max-width:100%; height:auto; border-radius:8px;">
+          </a>
+          <img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGH3G+EVUWI+5WG2+5YZ75" alt="">
+        </div>
       </div>
     </div>
 
-    <!-- 本日の注目地方レース -->
-    <h2 class="section-title">⚡ 本日 11/9 (月) 注目地方レース速報</h2>
+    <!-- 2R -->
+    
+<div class="race-card" id="kawasaki-race-2">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">2R</span> みずほ賞（2歳）</h2>
+          <div class="r-subtitle">ダート900m（左） | 7頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:30 発走</div>
+          <div class="cond">スピード一気</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">イクノナイト</div>
+            <div class="h-desc">野畑凌。単勝1.8倍の圧倒的スピード。最内からハナ奪い押し切る。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">トールキャット</div>
+            <div class="h-desc">古岡勇樹。相手筆頭の立ち回り。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ダイノエイコウ</div>
+            <div class="h-desc">中山遥人。外からスムーズなら好勝負。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell"><div class="h-name">ビエールブランシュ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell"><div class="h-name">トラストライオン</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">1 － 2, 7, 4, 5</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">1 － 2, 7 － 2, 4, 5, 7</span></li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- 川崎ナイター -->
-    <article class="race-card">
-      <div class="race-card-top">
-        <span class="race-badge-night">🌙 川崎ナイター</span>
-        <span class="race-time">20:15 発走</span>
+    <!-- 3R -->
+    
+<div class="race-card" id="kawasaki-race-3">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">3R</span> 未勝利（2歳）</h2>
+          <div class="r-subtitle">ダート1400m（左） | 8頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:00 発走</div>
+          <div class="cond">状態維持</div>
+        </div>
       </div>
-      <h3 class="race-title">川崎 11R かながわ消費者トラブル未然防止特別</h3>
-      <div class="race-conditions">
-        <span>ダ 1400m（左）</span>
-        <span>A2B1一組</span>
-        <span>出走 12頭</span>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ゴールドサンデー</div>
+            <div class="h-desc">野畑凌。調教良好、状態維持で手堅い走り。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ローノンバード</div>
+            <div class="h-desc">町田直希。1番人気、決め手上位。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell"><div class="h-name">デレチョ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">ラリーバック</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell"><div class="h-name">レガロペルテ</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">2 － 7, 3, 1, 5</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">2 － 7, 3 － 1, 3, 5, 7</span></li>
+        </ul>
       </div>
-      <div class="race-point-box">
-        <strong>【コース攻略メモ】</strong> 川崎ダ1400mはスタンド前スタートでコーナー4回。先行争いが激化してもコーナーがきついため外を回すと大ロスに。内枠の逃げ・先行馬の逃げ粘りを最重視するのが定石！
-      </div>
-    </article>
+    </div>
 
-    <!-- 佐賀ナイター -->
-    <article class="race-card">
-      <div class="race-card-top">
-        <span class="race-badge-night">🌙 佐賀ナイター</span>
-        <span class="race-time">20:05 発走</span>
+    <!-- 4R -->
+    
+<div class="race-card" id="kawasaki-race-4">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">4R</span> オオカマキリ賞（2歳）</h2>
+          <div class="r-subtitle">ダート1500m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:30 発走</div>
+          <div class="cond">前傾ラップ差し</div>
+        </div>
       </div>
-      <h3 class="race-title">佐賀 11R 錦秋特別</h3>
-      <div class="race-conditions">
-        <span>ダ 1860m（右）</span>
-        <span>Bクラス</span>
-        <span>出走 12頭</span>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">デイデイト</div>
+            <div class="h-desc">前走川崎1400を後方一気で1.1秒差圧勝。前掛かりの展開利＋53kgが強烈。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell">
+            <div class="h-name">リアルブルース</div>
+            <div class="h-desc">笹川翼。川崎1400逃げ切り勝ち。単騎なら残り目十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ソラニネガイヲ</div>
+            <div class="h-desc">川崎1400逃げ切り1.1差＋厩舎◎で格上げ。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">6</td>
+          <td class="info-cell"><div class="h-name">ザラストチャダル</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell">
+            <div class="h-name">アーキフェザー</div>
+            <div class="h-desc">1番人気想定も門別1000mからの距離延長＋厩舎△で危険視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell"><div class="h-name">インディゴールド</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">8 － 3, 2, 6, 5, 9</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">8 － 3, 2 － 3, 2, 6, 5, 9</span></li>
+          <li class="kaime-item"><span class="k-type">3連単</span><span class="k-nums">8 → 3, 2, 6 → 3, 2, 6, 5, 9</span></li>
+        </ul>
       </div>
-      <div class="race-point-box">
-        <strong>【コース攻略メモ】</strong> 佐賀の長距離戦。インの深い砂を避けて3〜4コーナーで外からマクれる持続力スタミナ型が浮上しやすいレイアウト。
-      </div>
-    </article>
+    </div>
 
-    <!-- 広告枠②: レース間 インフィード広告枠（A8.net 300x250） -->
-    <div class="ad-container">
-      <span class="ad-label">SPONSORED / おすすめ無料ポイ活で軍資金作り</span>
-      <div style="display:flex; justify-content:center; align-items:center; margin-top:6px;">
-        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+    <!-- 5R -->
+    
+<div class="race-card" id="kawasaki-race-5">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">5R</span> C2一二</h2>
+          <div class="r-subtitle">ダート1400m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:00 発走</div>
+          <div class="cond">軸不動</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">シエルライズ</div>
+            <div class="h-desc">浦和・川崎先行連勝中、舞台適性抜群＋厩舎◎。笹川翼で軸盤石。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell"><div class="h-name">シンエンコゲツ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">リコータロス</div>
+            <div class="h-desc">調教好仕上がり。大井1200mで1・3着のスピード。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">アルバレジェンダ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell"><div class="h-name">ストロンゲスト</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目（※危険な人気馬②ソルトアイリスは完全消し）</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">12 － 3, 10, 1, 9</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">12 － 3, 10 － 3, 10, 1, 9</span></li>
+          <li class="kaime-item"><span class="k-type">3連単</span><span class="k-nums">12 → 3, 10, 1 → 3, 10, 1, 9</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6R -->
+    
+<div class="race-card" id="kawasaki-race-6">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">6R</span> C2一二</h2>
+          <div class="r-subtitle">ダート1400m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:30 発走</div>
+          <div class="cond">好調持続</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">コスモマチュイティ</div>
+            <div class="h-desc">調教「好調持続」の確かな裏付け。川崎1400の安定感随一。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell"><div class="h-name">グロリアスフィリオ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell"><div class="h-name">サンダーゼウス</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell"><div class="h-name">エメラルドアロー</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">コスモモントレ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell"><div class="h-name">プレストエンジェル</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">4 － 7, 8, 2, 1, 5</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">4 － 7, 8 － 1, 2, 5, 7, 8</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7R -->
+    
+<div class="race-card" id="kawasaki-race-7">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">7R</span> 雷鼓賞（C2）</h2>
+          <div class="r-subtitle">ダート900m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:00 発走</div>
+          <div class="cond">適性最上位</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">マオノボルケーノ</div>
+            <div class="h-desc">川崎900mで0.2・0.3差の連続2着。同条件適性トップ＋調教好時計。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">6</td>
+          <td class="info-cell"><div class="h-name">ギガントマキア</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell"><div class="h-name">フライエフェクト</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">フェアリーキャット</div>
+            <div class="h-desc">1人気2.5倍想定。スピード能力突出も小回り初＋厩舎△でヒモ残し。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">ラッキーカムカム</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell"><div class="h-name">シノン</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">単勝</span><span class="k-nums">10</span></li>
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">10 － 6, 11, 12, 1, 7</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">10 － 6, 11 － 6, 11, 12, 1, 7</span></li>
+          <li class="kaime-item"><span class="k-type">3連単</span><span class="k-nums">10 → 6, 11, 12 → 6, 11, 12, 1, 7</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 8R -->
+    
+<div class="race-card" id="kawasaki-race-8">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">8R</span> 木犀賞（C1）</h2>
+          <div class="r-subtitle">ダート1400m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:30 発走</div>
+          <div class="cond">厩舎◎</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">シンメルーガス</div>
+            <div class="h-desc">厩舎◎。先行力と仕上がり上位で軸不動。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ゴールドブリーズ</div>
+            <div class="h-desc">厩舎◎も約11か月ぶりの休養明けで危険視、相手まで。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell"><div class="h-name">スカイロック</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell"><div class="h-name">モンバイト</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">リネンデザイン</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell"><div class="h-name">トーセンフランク</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">単勝</span><span class="k-nums">4</span></li>
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">4 － 7, 2, 8, 1, 5</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">4 － 2, 8 － 1, 2, 5, 7, 8</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 9R -->
+    
+<div class="race-card" id="kawasaki-race-9">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">9R</span> 金剛賞（C1）</h2>
+          <div class="r-subtitle">ダート900m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">19:05 発走</div>
+          <div class="cond">二重の裏付け</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">6</td>
+          <td class="info-cell">
+            <div class="h-name">リュウノアニス</div>
+            <div class="h-desc">厩舎◎＋調教「好気配保つ」の二重の裏付け。勝ち負け必至。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell"><div class="h-name">スマートシエル</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell"><div class="h-name">サンエイウルフ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell"><div class="h-name">リコーベルヴィル</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell"><div class="h-name">イエローエイト</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell"><div class="h-name">アーススカーレット</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">単勝</span><span class="k-nums">6</span></li>
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">6 － 9, 3, 1, 5, 8</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">6 － 9, 3 － 1, 3, 5, 8, 9</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 10R ★特注 -->
+    
+<div class="race-card" id="kawasaki-race-10">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">10R</span> シリウス特別（B2B3）</h2>
+          <div class="r-subtitle">ダート2000m（左） | 14頭立て | ★AI合議激論レース</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">19:40 発走</div>
+          <div class="cond">2強激突</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">オウケンデューク</div>
+            <div class="h-desc">御神本訓史。川崎2000勝ち＋調教↗「目下絶好調」。単騎逃げで勝ち切る爆発力。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ユメドリーム</div>
+            <div class="h-desc">川崎2000で3・2・3着。舞台適性・再現性は最上位の絶対軸。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell">
+            <div class="h-name">ビルドラポール</div>
+            <div class="h-desc">前走2000勝ち。53kgの軽量が魅力。前崩れで浮上。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">コパノモンタナ</div>
+            <div class="h-desc">和田譲治。2000mで1.2秒差圧勝歴あり。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell"><div class="h-name">ワチュゴナドゥ</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目（※11エスプリアキラサン、1ハクシュは完全消し）</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連</span><span class="k-nums">7 － 10（大本線1点）</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">7, 10 － 7, 10 － 5, 4, 2（計3点）</span></li>
+          <li class="kaime-item"><span class="k-type">3連単裏表</span><span class="k-nums">10 ⇄ 7 → 5, 4, 2（計6点勝負！）</span></li>
+        </ul>
+      </div>
+
+      <!-- 川田さんのA8.net提携済み本物アフィリエイト広告（特P 横長バナー） -->
+      <div class="infeed-ad-box">
+        <div class="infeed-ad-label">【PR】川崎・南関競馬遠征の駐車場予約に！スマホで安く事前予約</div>
+        <div class="infeed-ad-content">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4BGH3G+UD4MQ+43U8+C3BAP" rel="nofollow" target="_blank">
+            <img border="0" width="320" height="50" alt="安い駐車場を検索して事前予約！特P" src="https://www26.a8.net/svt/bgt?aid=261109132051&wid=001&eno=01&mid=s00000019160002031000&mc=1" style="max-width:100%; height:auto; border-radius:6px;">
+          </a>
+          <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGH3G+UD4MQ+43U8+C3BAP" alt="">
+        </div>
+      </div>
+      <details class="analysis-details">
+        <summary class="analysis-summary">💡 AI討論ログ：なぜこの買い目なのか？ <span>▼</span></summary>
+        <div class="analysis-body">
+          反復実績の⑦ユメドリームと調教絶好の⑩オウケンデュークの二強構造。1番人気ハクシュは休み明け＋厩舎△でバッサリ消去。3連単は「10→7」と「7→10」の裏表6点で逆転リスクを完全にカバーし回収率を最大化します。
+        </div>
+      </details>
+    </div>
+
+    <!-- 11R ★メイン -->
+    
+<div class="race-card" id="kawasaki-race-11">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">11R</span> かながわ消費者トラブル未然防止特別</h2>
+          <div class="r-subtitle">ダート1400m（左） | 12頭立て | A2B1選抜 | ★メイン最高期待値</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">20:15 発走</div>
+          <div class="cond">激流前崩れ</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">マイケルマキシマス</div>
+            <div class="h-desc">御神本訓史。川崎連勝中。先行4頭激化による前崩れを中団から一気にねじ伏せる。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">タイセイミッション</div>
+            <div class="h-desc">矢野貴之。JRAダ1400mオープンクラスの基礎スピード。内田厩舎の2頭出し勝負馬。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">リコールガー</div>
+            <div class="h-desc">野畑凌。大井1600で逃げてきた地力A2級。先行粘り込み警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ベラール</div>
+            <div class="h-desc">町田直希。9歳馬だが同舞台0.0秒差2着実績。激流消耗戦で大外一気3着突入の特注穴！</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">6</td>
+          <td class="info-cell">
+            <div class="h-name">ミラクルヴォイス</div>
+            <div class="h-desc">同条件勝ち馬も5か月休養明け＋57kgで割引。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell"><div class="h-name">リチャードバローズ</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 厳選1,000円勝負買い目（期待値モデル監査済）</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">単勝（400円）</span><span class="k-nums">10（単勝20倍前後の歪み獲り）</span></li>
+          <li class="kaime-item"><span class="k-type">馬連（400円）</span><span class="k-nums">9 － 10（内田厩舎ツートップワンツー）</span></li>
+          <li class="kaime-item"><span class="k-type">ワイド（200円）</span><span class="k-nums">4 － 9（激流前崩れのベラール爆裂配当）</span></li>
+        </ul>
+      </div>
+
+      <!-- 川田さんのA8.net提携済み本物アフィリエイト広告（特P） -->
+      <div class="infeed-ad-box">
+        <div class="infeed-ad-label">【PR】競馬場へ車で行くなら！周辺駐車場を事前予約でお得にキープ</div>
+        <div class="infeed-ad-content">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4BGH3G+UD4MQ+43U8+C3QQ9" rel="nofollow" target="_blank">
+            <img border="0" width="300" height="250" alt="駐車場予約なら特P" src="https://www21.a8.net/svt/bgt?aid=261109132051&wid=001&eno=01&mid=s00000019160002033000&mc=1" style="max-width:100%; height:auto; border-radius:8px;">
+          </a>
+          <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BGH3G+UD4MQ+43U8+C3QQ9" alt="">
+        </div>
+      </div>
+      <details class="analysis-details">
+        <summary class="analysis-summary">💡 展開シミュレーション詳細 <span>▼</span></summary>
+        <div class="analysis-body">
+          逃げ馬（⑦デアシュトゥルム、⑫リコールガー、③メンタイマヨ、①ヴィヴィアンエイト）が4頭殺到しハイペース必至。⑩タイセイミッションはJRAの追走データから中団5〜6番手、⑨マイケルマキシマスは7番手外目を追走。直線で⑨が豪快に差し切り、⑩が追撃。バテた先行勢の間を突いて④ベラールが3着に飛び込む展開が最も濃厚です。
+        </div>
+      </details>
+    </div>
+
+    <!-- 12R -->
+    
+<div class="race-card" id="kawasaki-race-12">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">12R</span> スコッチ賞（C1）</h2>
+          <div class="r-subtitle">ダート1600m（左） | 13頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">20:50 発走</div>
+          <div class="cond">最終一撃</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ロジキセキ</div>
+            <div class="h-desc">前走川崎1600勝ち＋JRA新潟ダ1800実績最上位。軸不動。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">チョコラテ</div>
+            <div class="h-desc">川崎1500で1・1・2着と絶好調。御神本訓史で1600も射程。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell"><div class="h-name">フルミネビアンコ</div></td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">ブルーオーシャン</div>
+            <div class="h-desc">前走川崎1600を0.9差圧勝＋調教「好調持続」で相手本線に抜擢！</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell">
+            <div class="h-name">イトシサ</div>
+            <div class="h-desc">JRA実績あるが地方初・小回り不安で危険視格下げ。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">13</td>
+          <td class="info-cell"><div class="h-name">キタノホウセキ</div></td>
+        </tr>
+      </table>
+      <div class="kaime-box">
+        <div class="kaime-title">🎯 推奨買い目（※10ウワサノアノコは除外）</div>
+        <ul class="kaime-list">
+          <li class="kaime-item"><span class="k-type">馬連・ワイド</span><span class="k-nums">2 － 4, 11, 7, 3, 13</span></li>
+          <li class="kaime-item"><span class="k-type">3連複</span><span class="k-nums">2 － 4, 11 － 4, 11, 7, 3, 13</span></li>
+          <li class="kaime-item"><span class="k-type">3連単</span><span class="k-nums">2 → 4, 11, 7 → 4, 11, 7, 3, 13</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- フッター -->
+  <footer>
+    <p>© 2026 わんぱらAI 競馬データ分析チーム</p>
+    <p style="margin-top:4px;">※馬券の購入は自己責任でお願いいたします。20歳未満の購入は法律で禁止されています。</p>
+  </footer>
+
+  <!-- 固定ボトム広告バー -->
+  <!-- 【広告コード差し替え場所②】ここをA8.net等のアフィリエイトリンクに置き換えてください -->
+  <div class="fixed-bottom-bar">
+    <div>
+      <div class="bottom-ad-text">南関競馬の馬券購入なら「SPAT4 / 楽天競馬」</div>
+      <div class="bottom-ad-sub">スマホから即日投票・新規特典あり</div>
+    </div>
+    <a href="https://www.spat4.jp/" target="_blank" rel="noopener noreferrer" class="bottom-ad-btn">馬券投票へ</a>
+  </div>
+
+  <script>
+    function switchRace(raceNum) {
+      // タブのアクティブ切り替え
+      const tabs = document.querySelectorAll('.race-tab');
+      tabs.forEach((tab, index) => {
+        if (index + 1 === raceNum) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      // カードの表示切り替え
+      const cards = document.querySelectorAll('.race-card');
+      cards.forEach((card, index) => {
+        if (index + 1 === raceNum) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      // スムーズスクロール
+      window.scrollTo({
+        top: 140,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+      </div>
+    </div>
+    <div class="track-section" id="section-morioka">
+      <div class="tabs-wrapper">
+        <div class="race-tabs">
+          
+      <button class="race-tab active" onclick="switchRace('morioka', 1)" id="tab-morioka-1">
+        <span class="r-num">1R</span>
+        <span class="r-time">11:45</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 2)" id="tab-morioka-2">
+        <span class="r-num">2R</span>
+        <span class="r-time">12:20</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 3)" id="tab-morioka-3">
+        <span class="r-num">3R</span>
+        <span class="r-time">12:55</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 4)" id="tab-morioka-4">
+        <span class="r-num">4R</span>
+        <span class="r-time">13:30</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 5)" id="tab-morioka-5">
+        <span class="r-num">5R</span>
+        <span class="r-time">14:05</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 6)" id="tab-morioka-6">
+        <span class="r-num">6R</span>
+        <span class="r-time">14:40</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 7)" id="tab-morioka-7">
+        <span class="r-num">7R</span>
+        <span class="r-time">15:15</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 8)" id="tab-morioka-8">
+        <span class="r-num">8R</span>
+        <span class="r-time">15:50</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('morioka', 9)" id="tab-morioka-9">
+        <span class="r-num">9R</span>
+        <span class="r-time">16:25</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('morioka', 10)" id="tab-morioka-10">
+        <span class="r-num">10R</span>
+        <span class="r-time">17:05</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('morioka', 11)" id="tab-morioka-11">
+        <span class="r-num">11R</span>
+        <span class="r-time">17:40</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('morioka', 12)" id="tab-morioka-12">
+        <span class="r-num">12R</span>
+        <span class="r-time">18:15</span>
+      </button>
+        </div>
+      </div>
+      <div class="container">
+        
+    <div class="race-card active" id="morioka-race-1">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">1R</span> C2</h2>
+          <div class="r-subtitle">ダ1000m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">11:45 発走</div>
+          <div class="cond">ダ1000m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">スーパーシスター</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">シャイニーテースト</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">キャリーアドリーム</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">リオンアンサー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ハートループ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-2">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">2R</span> C2</h2>
+          <div class="r-subtitle">ダ1000m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">12:20 発走</div>
+          <div class="cond">ダ1000m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">クリノブリーゼ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ユーベルジーク</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ウェズン</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ポルテボヌール</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ポデローサ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-3">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">3R</span> C2七組</h2>
+          <div class="r-subtitle">ダ1400m（左） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">12:55 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">キタノソブリン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ドリタル</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">サトノメドーサ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ゼットナッキー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">トーセンアミューズ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-4">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">4R</span> C2六組</h2>
+          <div class="r-subtitle">ダ1400m（左） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">13:30 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ルアグロール</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ミスメリッサ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">グレイスルーラー</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">サトノアヴァロン</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">コンバットスネル</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-5">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">5R</span> C2五組</h2>
+          <div class="r-subtitle">ダ1400m（左） | 10頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">14:05 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">テーオーロバート</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ビームービー</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ジョードプル</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">キタノシオン</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">アルデムラータ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-6">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">6R</span> C1</h2>
+          <div class="r-subtitle">ダ1000m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">14:40 発走</div>
+          <div class="cond">ダ1000m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">シノブデスティーノ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">クレナイノヒメ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">カンフーダンス</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">アビレ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">オーヴァーザトップ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-7">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">7R</span> C1</h2>
+          <div class="r-subtitle">ダ1000m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:15 発走</div>
+          <div class="cond">ダ1000m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">タイコネン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">フエルテテソーロ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">タニマサベーカ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">スピードスター</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ハイモビリティ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-8">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">8R</span> C1</h2>
+          <div class="r-subtitle">ダ1400m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:50 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ウインディ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ハクアイドリーム</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">テーオールノワール</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ウインチャチャ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ゴッドヴァレー</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-9">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">9R</span> C1</h2>
+          <div class="r-subtitle">ダ1400m（左） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:25 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">マイベスティー</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">トキノワンカラット</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ジェイケイミリミリ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">アフタービート</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">アステローペ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-10">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">10R</span> 社台スタリオンステーション特別(C1)</h2>
+          <div class="r-subtitle">ダ1400m（左） | 12頭立て | ★特別競走</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:05 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ヤマショウシャイン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ジュンハンス</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">デンコウセッカ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ストロングフーヴス</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">アンテニトルス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-11">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">11R</span> 晩秋特別(A)</h2>
+          <div class="r-subtitle">ダ1600m（左） | 11頭立て | ★メイン注目レース</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:40 発走</div>
+          <div class="cond">ダ1600m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">3</td>
+          <td class="info-cell">
+            <div class="h-name">プリンスミノル</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell">
+            <div class="h-name">サンエイコンドル</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">コパノマロン</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ラティサワー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ソラーロ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">3 － 5, 2, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">3 － 5 － 2, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">3 → 5 → 2, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="morioka-race-12">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">12R</span> 霜月特別(A)</h2>
+          <div class="r-subtitle">ダ1600m（左） | 12頭立て | ★最終一発逆転</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:15 発走</div>
+          <div class="cond">ダ1600m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ブラックバトラー</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">アルサーフィ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">リトルサムシング</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ヴァトレニ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">オンラインボス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+      </div>
+    </div>
+    <div class="track-section" id="section-nagoya">
+      <div class="tabs-wrapper">
+        <div class="race-tabs">
+          
+      <button class="race-tab active" onclick="switchRace('nagoya', 1)" id="tab-nagoya-1">
+        <span class="r-num">1R</span>
+        <span class="r-time">12:40</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 2)" id="tab-nagoya-2">
+        <span class="r-num">2R</span>
+        <span class="r-time">13:10</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 3)" id="tab-nagoya-3">
+        <span class="r-num">3R</span>
+        <span class="r-time">13:45</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 4)" id="tab-nagoya-4">
+        <span class="r-num">4R</span>
+        <span class="r-time">14:20</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 5)" id="tab-nagoya-5">
+        <span class="r-num">5R</span>
+        <span class="r-time">14:50</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 6)" id="tab-nagoya-6">
+        <span class="r-num">6R</span>
+        <span class="r-time">15:25</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 7)" id="tab-nagoya-7">
+        <span class="r-num">7R</span>
+        <span class="r-time">16:05</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 8)" id="tab-nagoya-8">
+        <span class="r-num">8R</span>
+        <span class="r-time">16:40</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('nagoya', 9)" id="tab-nagoya-9">
+        <span class="r-num">9R</span>
+        <span class="r-time">17:15</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('nagoya', 10)" id="tab-nagoya-10">
+        <span class="r-num">10R</span>
+        <span class="r-time">17:50</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('nagoya', 11)" id="tab-nagoya-11">
+        <span class="r-num">11R</span>
+        <span class="r-time">18:20</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('nagoya', 12)" id="tab-nagoya-12">
+        <span class="r-num">12R</span>
+        <span class="r-time">18:55</span>
+      </button>
+        </div>
+      </div>
+      <div class="container">
+        
+    <div class="race-card active" id="nagoya-race-1">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">1R</span> C29組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">12:40 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">サノノスレーヴ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ファリナータ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ヴィクトリアビーチ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">ヨザクラブルース</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">アリス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-2">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">2R</span> C28組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">13:10 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ムーヴザニードル</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">リヴァデラルナ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ココプレミア</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">イゲマジャ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">アンヌグロース</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-3">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">3R</span> C27組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">13:45 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">セイヒンクイーン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">レーヌシェーヌ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ミツカネルナ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">ウワサノモアナ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">スマートピクタス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-4">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">4R</span> 2歳疾風戦</h2>
+          <div class="r-subtitle">ダ920m（右） | 10頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">14:20 発走</div>
+          <div class="cond">ダ920m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">アノヒノヤクソク</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ニシキマカヒキ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ゴールデンシャイナ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">ノースバレリーナ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">セプテンバームーン</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 9, 10</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-5">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">5R</span> 2歳4組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">14:50 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ルクスオリジン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">サンヨウゴージャス</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ダバイストリーム</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">ヤングゼネラル</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">スカーヒップ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-6">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">6R</span> 創太・智惠 結婚記念(C)</h2>
+          <div class="r-subtitle">ダ1500m（右） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:25 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">オーキッドワン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">アージェンタイド</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ゴールデンボート</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">レッドジルベスター</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">メイショウイサミ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-7">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">7R</span> C25組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:05 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">シェンロン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">リアンマカ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">イマジェリーナ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">バックトラック</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ゼンダンマイウェイ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-8">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">8R</span> C24組</h2>
+          <div class="r-subtitle">ダ1500m（右） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:40 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">グランドサークル</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">クールロジック</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">アロハオエ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ペリバジャ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">トゥスコラーナ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-9">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">9R</span> メンカリナン特別(B)</h2>
+          <div class="r-subtitle">ダ1700m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:15 発走</div>
+          <div class="cond">ダ1700m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">アミアン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">5</td>
+          <td class="info-cell">
+            <div class="h-name">ロングトーン</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">アカツキロットリー</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">スフレ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">インジェニアス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 5, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 5 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 5 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-10">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">10R</span> レディス・カペラ特別(B)</h2>
+          <div class="r-subtitle">ダ1500m（右） | 10頭立て | ★特別競走</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:50 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">トリスティ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ヴァルドグラース</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">サヤヒメ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">ケイズエルミー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">ビアリッツ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 9, 10</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-11">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">11R</span> ぎょしゃ座特別(B)</h2>
+          <div class="r-subtitle">ダ1400m（右） | 11頭立て | ★メイン注目レース</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:20 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">レジーナチェリ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">サンマイメ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ホウオウシーザー</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">パルヴェニュー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">マイネルモンテュス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="nagoya-race-12">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">12R</span> 金シャチ最終戦(C)</h2>
+          <div class="r-subtitle">ダ1500m（右） | 12頭立て | ★最終一発逆転</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:55 発走</div>
+          <div class="cond">ダ1500m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ポンテヴェッキオ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">メイショウツキヨ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">アイゼンハイム</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ゴールドアベニュー</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">サンライズハリー</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+      </div>
+    </div>
+    <div class="track-section" id="section-saga">
+      <div class="tabs-wrapper">
+        <div class="race-tabs">
+          
+      <button class="race-tab active" onclick="switchRace('saga', 1)" id="tab-saga-1">
+        <span class="r-num">1R</span>
+        <span class="r-time">14:35</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 2)" id="tab-saga-2">
+        <span class="r-num">2R</span>
+        <span class="r-time">15:10</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 3)" id="tab-saga-3">
+        <span class="r-num">3R</span>
+        <span class="r-time">15:45</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 4)" id="tab-saga-4">
+        <span class="r-num">4R</span>
+        <span class="r-time">16:20</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 5)" id="tab-saga-5">
+        <span class="r-num">5R</span>
+        <span class="r-time">16:55</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 6)" id="tab-saga-6">
+        <span class="r-num">6R</span>
+        <span class="r-time">17:25</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 7)" id="tab-saga-7">
+        <span class="r-num">7R</span>
+        <span class="r-time">17:55</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 8)" id="tab-saga-8">
+        <span class="r-num">8R</span>
+        <span class="r-time">18:25</span>
+      </button>
+      <button class="race-tab" onclick="switchRace('saga', 9)" id="tab-saga-9">
+        <span class="r-num">9R</span>
+        <span class="r-time">19:00</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('saga', 10)" id="tab-saga-10">
+        <span class="r-num">10R</span>
+        <span class="r-time">19:30</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('saga', 11)" id="tab-saga-11">
+        <span class="r-num">11R</span>
+        <span class="r-time">20:05</span>
+      </button>
+      <button class="race-tab special" onclick="switchRace('saga', 12)" id="tab-saga-12">
+        <span class="r-num">12R</span>
+        <span class="r-time">20:40</span>
+      </button>
+        </div>
+      </div>
+      <div class="container">
+        
+    <div class="race-card active" id="saga-race-1">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">1R</span> 2歳ー5組</h2>
+          <div class="r-subtitle">ダ1300m（右） | 9頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">14:35 発走</div>
+          <div class="cond">ダ1300m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">アンジェロビート</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ヒロサカエ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">プレアミータマ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">クリアマインド</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">セーズノヴァ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 8, 9</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 8, 9</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 8, 9</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-2">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">2R</span> 2歳ー4組</h2>
+          <div class="r-subtitle">ダ1300m（右） | 8頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:10 発走</div>
+          <div class="cond">ダ1300m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ツキヨノネガイ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ダバイホーオー</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ハクアイファミリー</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">バミューダボーイ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">グランディオーソ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 7, 8</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 7, 8</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 7, 8</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-3">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">3R</span> C2ー13組</h2>
+          <div class="r-subtitle">ダ1400m（右） | 11頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">15:45 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">サスペンスクィーン</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">サマーブライド</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">スターチスブーケ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">メイショウトレック</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ブルームソング</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 10, 11</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 10, 11</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-4">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">4R</span> 函館馬主協会来場記念(C2)</h2>
+          <div class="r-subtitle">ダ1400m（右） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:20 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">サブノレインボー</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ミッキースワン</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">コスモタキシード</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ラヴァルス</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ショーダンビギン</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-5">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">5R</span> C2ー11組</h2>
+          <div class="r-subtitle">ダ1400m（右） | 12頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">16:55 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">オーロクリューソス</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">カスミヅキ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">サンライズプロミス</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ウインダンスタイム</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">スエズマックス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-6">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">6R</span> C1ー7組</h2>
+          <div class="r-subtitle">ダ1400m（右） | 8頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:25 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">モズオラージュ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ドゥエルセーラ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">アイアムルンルン</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">7</td>
+          <td class="info-cell">
+            <div class="h-name">カシノハンゾウ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">サクセスビービー</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 7, 8</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 7, 8</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 7, 8</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-7">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">7R</span> C1ー6組</h2>
+          <div class="r-subtitle">ダ1300m（右） | 10頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">17:55 発走</div>
+          <div class="cond">ダ1300m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">オールズフェア</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ラグアイリータ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ゴルトツィーゲル</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">ポムヴェルト</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">ホスマニエン</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 9, 10</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-8">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">8R</span> C1ー5組</h2>
+          <div class="r-subtitle">ダ1300m（右） | 9頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">18:25 発走</div>
+          <div class="cond">ダ1300m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ベラジオボッキーニ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ライジングハース</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">カッサンドラ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">8</td>
+          <td class="info-cell">
+            <div class="h-name">フクノスナノバラ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">ノブノリオウ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 8, 9</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 8, 9</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 8, 9</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-9">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge">9R</span> ハナキリン賞</h2>
+          <div class="r-subtitle">ダ1400m（右） | 10頭立て</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">19:00 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">フクノブルジュ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ビレッジシングル</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">ベイデンマリーナ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">9</td>
+          <td class="info-cell">
+            <div class="h-name">イナフセド</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">10</td>
+          <td class="info-cell">
+            <div class="h-name">テイエムダイタカ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 9, 10</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 9, 10</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-10">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">10R</span> SAGAリベンジャーズダッシュ1組(C2)</h2>
+          <div class="r-subtitle">ダ900m（右） | 11頭立て | ★特別競走</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">19:30 発走</div>
+          <div class="cond">ダ900m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">スカイアクセル</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">オオイリブクロ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">カパラミプ</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">スマートアリスター</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">ペレストリーナ</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-11">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">11R</span> 錦秋特別(B)</h2>
+          <div class="r-subtitle">ダ1860m（右） | 12頭立て | ★メイン注目レース</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">20:05 発走</div>
+          <div class="cond">ダ1860m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">コスモコンクエスト</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ワイズポーシャ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">テイエムタワードン</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">11</td>
+          <td class="info-cell">
+            <div class="h-name">ジーティーレイナ</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">12</td>
+          <td class="info-cell">
+            <div class="h-name">イサチルプリンス</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 11, 12</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 11, 12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="race-card" id="saga-race-12">
+      <div class="card-header">
+        <div class="r-title-area">
+          <h2><span class="r-badge" style="background:#ec4899; color:#fff;">12R</span> SAGAリベFEVER14(C2)</h2>
+          <div class="r-subtitle">ダ1400m（右） | 14頭立て | ★最終一発逆転</div>
+        </div>
+        <div class="r-meta">
+          <div class="post-time">20:40 発走</div>
+          <div class="cond">ダ1400m戦</div>
+        </div>
+      </div>
+      <table class="horses-table">
+        
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-honmei">◎</span></td>
+          <td class="num-cell">2</td>
+          <td class="info-cell">
+            <div class="h-name">ベラジオソノダヒメ</div>
+            <div class="h-desc">騎乗。先行力・仕上がり上位。コース適性高く本命視。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-taiko">○</span></td>
+          <td class="num-cell">4</td>
+          <td class="info-cell">
+            <div class="h-name">ネオディヤマンテ</div>
+            <div class="h-desc">騎乗。近走安定した末脚。展開向けば逆転十分。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tanana">▲</span></td>
+          <td class="num-cell">1</td>
+          <td class="info-cell">
+            <div class="h-name">エメラルドシティー</div>
+            <div class="h-desc">騎乗。好調維持。前目で運べれば好勝負可能。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-tokuchu">☆</span></td>
+          <td class="num-cell">13</td>
+          <td class="info-cell">
+            <div class="h-name">モズナツノジン</div>
+            <div class="h-desc">騎乗。展開の鍵を握る穴馬。調教気配急上昇で一発警戒。</div>
+          </td>
+        </tr>
+        <tr class="horse-row">
+          <td class="mark-cell"><span class="mark-badge mark-osae">△</span></td>
+          <td class="num-cell">14</td>
+          <td class="info-cell">
+            <div class="h-name">アーバンキング</div>
+            <div class="h-desc">騎乗。連下押さえ。混戦での浮上余地あり。</div>
+          </td>
+        </tr>
+      </table>
+      
+      <div class="bets-area">
+        <div class="bets-title">🎯 推奨買い目</div>
+        <ul class="bets-list">
+          <li class="bet-item">
+            <span class="bet-type">馬連・ワイド</span>
+            <span class="bet-nums">2 － 4, 1, 13, 14</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連複</span>
+            <span class="bet-nums">2 － 4 － 1, 13, 14</span>
+          </li>
+          <li class="bet-item">
+            <span class="bet-type">3連単</span>
+            <span class="bet-nums">2 → 4 → 1, 13, 14</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+      </div>
+    </div>
+
+  <!-- 広告・連携エリア -->
+  <div class="container">
+    
+    <!-- A8.net ワラウ広告（300x250） -->
+    <div class="banner-ad-box">
+      <span class="ad-label-tag">SPONSORED / おすすめ無料ポイ活で地方競馬の軍資金作り</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:4px;">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px;">
           <img border="0" width="300" height="250" alt="ポイ活ならワラウ" src="https://www29.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003014000&mc=1" style="max-width:100%; height:auto; display:block;">
         </a>
         <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" alt="">
       </div>
     </div>
 
-    <!-- 南関4場 攻略早見表 -->
-    <h2 class="section-title">🏟️ 南関東4競馬場 コース攻略早見表</h2>
-    <div class="course-grid">
-      <div class="course-card">
-        <div class="course-name">
-          <span>大井競馬場</span>
-          <span class="course-sub">東京・ナイター</span>
-        </div>
-        <p class="course-desc">右回り。直線が地方最長の386m（外回り）。差し・追い込みも届くフェアな舞台。外枠有利傾向あり。</p>
-      </div>
-      <div class="course-card">
-        <div class="course-name">
-          <span>川崎競馬場</span>
-          <span class="course-sub">神奈川・ナイター</span>
-        </div>
-        <p class="course-desc">左回り。コーナーが急で直線300m。逃げ・先行が圧倒的有利！外を回ると大敗リスクあり。</p>
-      </div>
-      <div class="course-card">
-        <div class="course-name">
-          <span>船橋競馬場</span>
-          <span class="course-sub">千葉・ナイター</span>
-        </div>
-        <p class="course-desc">左回り。スパイラルカーブ導入でコーナーでのスピード低下が少なく、差し馬の台頭も目立つ高速ダート。</p>
-      </div>
-      <div class="course-card">
-        <div class="course-name">
-          <span>浦和競馬場</span>
-          <span class="course-sub">埼玉・昼開催</span>
-        </div>
-        <p class="course-desc">左回り。直線220mと極めて短く、コース幅も狭い。圧倒的な前残り競馬でイン先行勢が絶対有利。</p>
-      </div>
-    </div>
-
-    <!-- おるの地方勝負予想枠 -->
-    <section class="prediction-slot">
-      <span class="prediction-badge">🔥 DAILY PREDICTION</span>
-      <h3 class="prediction-heading">🎯 おるの地方競馬渾身予想（本命◎＆買い目）</h3>
-      <p class="prediction-desc">
-        南関ナイターや注目の交流重賞を中心に、管理人・おるの勝負レース予想を夕方に公開予定です！<br>
-        パドック気配とオッズの妙味を捉えた本命馬をお楽しみに！
-      </p>
-    </section>
-
-    <!-- 中央競馬予想ラボへのリンク -->
-    <a href="https://oru-keibalab.github.io/keiba-lab/" class="central-link-box" target="_blank" rel="noopener noreferrer">
-      <div>
-        <div class="central-link-title">🏇 週末の中央重賞予想はこちら！</div>
-        <div class="central-link-sub">エリザベス女王杯・武蔵野S・デイリー杯2歳Sのデータ分析公開中！</div>
-      </div>
-      <div class="central-link-arrow">→</div>
-    </a>
-
-    <!-- 忍者AdMax インプレッション広告枠 -->
-    <div class="ad-container" style="margin: 32px 0;">
-      <span class="ad-label">SPONSORED / インプレッション広告</span>
-      <div style="display:flex; justify-content:center; align-items:center; margin-top:8px; min-height:100px;">
+    <!-- 忍者AdMax インプレッション広告 -->
+    <div class="banner-ad-box">
+      <span class="ad-label-tag">SPONSORED / インプレッション広告</span>
+      <div style="display:flex; justify-content:center; align-items:center; min-height:100px;">
         <!-- admax -->
         <script src="https://adm.shinobi.jp/s/e95b06bd6b69ee0b778825791b1acd78"></script>
         <!-- admax -->
       </div>
     </div>
 
-    <!-- プロフィール -->
-    <div class="profile-card">
-      <div class="profile-avatar">🐴</div>
-      <div class="profile-info">
-        <div class="profile-name">おる（おるの競馬予想）</div>
-        <p class="profile-bio">競馬歴9年目・平日も休日も競馬漬け！中央・地方を問わず、回収率重視のデータ分析＆穴馬狙いを発信中。</p>
-        <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" class="x-follow-btn">
-          𝕏 @keiba114ne をフォロー
-        </a>
+    <!-- 中央競馬予想サイト相互リンク -->
+    <a href="https://oru-keibalab.github.io/keiba-lab/" class="portal-link-box">
+      <div class="pl-text">
+        <h4>🏇 週末の中央重賞はこちら「おるの重賞予想ラボ」</h4>
+        <p>エリザベス女王杯・武蔵野S・デイリー杯2歳S 過去10年データ分析公開中！</p>
       </div>
+      <div class="pl-btn">中央予想へ ❯</div>
+    </a>
+
+    <!-- Xアカウント連携 -->
+    <div class="x-follow-box">
+      <div class="xf-info">
+        <div class="xf-avatar">おる</div>
+        <div class="xf-text">
+          <h4>おるの競馬予想（@keiba114ne）</h4>
+          <p>競馬歴9年目・netkeiba公式フォロワー認定</p>
+        </div>
+      </div>
+      <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" class="xf-btn">フォロー</a>
     </div>
 
-    <footer>
-      &copy; 2026 おるの地方競馬ナビ All Rights Reserved.
-    </footer>
+  </div>
 
-  </main>
+  <!-- フッター固定 馬券投票バー -->
+  <div class="bottom-bar">
+    <div class="bottom-info">
+      <p>地方競馬の馬券購入なら「楽天競馬 / SPAT4」</p>
+      <span>スマホから即日投票・全場ライブ中継無料</span>
+    </div>
+    <a href="https://keiba.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" class="bottom-btn">馬券投票へ ❯</a>
+  </div>
 
+  <script>
+    let currentTrack = 'kawasaki';
+
+    function switchTrack(trackKey) {
+      currentTrack = trackKey;
+      
+      // Update track tabs
+      document.querySelectorAll('.track-tab').forEach(tab => tab.classList.remove('active'));
+      const activeTab = document.getElementById('tab-' + trackKey);
+      if (activeTab) activeTab.classList.add('active');
+
+      // Update track sections
+      document.querySelectorAll('.track-section').forEach(sec => sec.classList.remove('active'));
+      const activeSec = document.getElementById('section-' + trackKey);
+      if (activeSec) activeSec.classList.add('active');
+    }
+
+    function switchRace(trackKey, raceNum) {
+      // Update race tabs for this track
+      const sec = document.getElementById('section-' + trackKey);
+      if (!sec) return;
+
+      sec.querySelectorAll('.race-tab').forEach(tab => tab.classList.remove('active'));
+      const activeTab = document.getElementById('tab-' + trackKey + '-' + raceNum);
+      if (activeTab) activeTab.classList.add('active');
+
+      // Update race cards for this track
+      sec.querySelectorAll('.race-card').forEach(card => card.classList.remove('active'));
+      const activeCard = document.getElementById(trackKey + '-race-' + raceNum);
+      if (activeCard) activeCard.classList.add('active');
+    }
+  </script>
 </body>
 </html>

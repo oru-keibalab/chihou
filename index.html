@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>おるの地方競馬ナビ | 地方全場・全レースAI予想＆合成オッズ重視</title>
   <meta name="description" content="盛岡・名古屋・門別・金沢・川崎の本日全59レースをスピード指数合議モデル×3連複フォーメーションで完全無料公開！発走前リアルタイム予想と上位5着確定結果。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,9 +241,15 @@
 
   <!-- Overall Live Summary -->
   <div class="summary-card">
-    <div class="summary-title">
-      <span>📊 本日のリアルタイム成績（全レース集計）</span>
-      <span style="font-size:11px; color:#2563eb; font-weight:700;">3連複＆合成オッズ重視モデル</span>
+    <div class="summary-title" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+      <div>
+        <span>📊 本日のリアルタイム成績（全レース集計）</span>
+        <span style="font-size:11px; color:#64748b; font-weight:normal; margin-left:8px;">🔄 最終更新 12:02（10分毎自動更新）</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:11px; color:#2563eb; font-weight:700;">3連複＆合成オッズ重視モデル</span>
+        <button onclick="location.reload(true)" style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:2px 8px; font-size:11px; cursor:pointer; color:#334155;">🔄 更新</button>
+      </div>
     </div>
     <div class="summary-grid">
       <div class="sum-item">
@@ -6648,6 +6657,11 @@
         }
       });
     });
+
+    // Auto reload every 3 minutes to keep live stats fresh
+    setTimeout(() => {
+      location.reload(true);
+    }, 180000);
   </script>
 </body>
 </html>

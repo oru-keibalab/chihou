@@ -185,6 +185,23 @@
     .t5-name { padding-left: 6px; font-weight: 700; }
     .t5-time { text-align: right; color: #64748b; }
 
+    
+    /* Payout Table */
+    .payout-box { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-top: 8px; }
+    .payout-title { font-size: 11px; font-weight: 900; color: #1e293b; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
+    .payout-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .payout-table tr { border-bottom: 1px solid #f1f5f9; }
+    .payout-table tr:last-child { border-bottom: none; }
+    .pay-lbl { width: 44px; text-align: left; font-weight: 700; color: #64748b; padding: 4px 0; }
+    .pay-num { font-weight: 700; color: #0f172a; padding: 4px 6px; word-break: break-all; }
+    .pay-yen { text-align: right; font-weight: 900; color: #047857; padding: 4px 0; white-space: nowrap; }
+    .pay-row-3fuku { background: #f0fdf4; }
+    .pay-row-3fuku .pay-lbl { color: #15803d; }
+    .pay-row-3fuku .pay-yen { color: #15803d; }
+    .pay-row-3tan { background: #fff7ed; }
+    .pay-row-3tan .pay-lbl { color: #c2410c; }
+    .pay-row-3tan .pay-yen { color: #c2410c; }
+
     /* Footer & Bottom Ad */
     .footer { text-align: center; padding: 24px 16px; font-size: 11px; color: #64748b; border-top: 1px solid var(--border); margin-top: 30px; }
     .footer-links { margin-bottom: 8px; display: flex; justify-content: center; gap: 14px; }
@@ -244,7 +261,7 @@
     <div class="summary-title" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
       <div>
         <span>📊 本日のリアルタイム成績（全レース集計）</span>
-        <span style="font-size:11px; color:#64748b; font-weight:normal; margin-left:8px;">🔄 最終更新 15:33（10分毎自動更新）</span>
+        <span style="font-size:11px; color:#64748b; font-weight:normal; margin-left:8px;">🔄 最終更新 15:38（10分毎自動更新）</span>
       </div>
       <div style="display:flex; align-items:center; gap:8px;">
         <span style="font-size:11px; color:#2563eb; font-weight:700;">3連複＆合成オッズ重視モデル</span>
@@ -254,19 +271,19 @@
     <div class="summary-grid">
       <div class="sum-item">
         <span class="sum-lbl">完了レース</span>
-        <span class="sum-val">18 / 59 R</span>
+        <span class="sum-val">19 / 59 R</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">的中率</span>
-        <span class="sum-val">16.7%</span>
+        <span class="sum-val">15.8%</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">回収率</span>
-        <span class="sum-val">15.6%</span>
+        <span class="sum-val">14.7%</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">本日トータル収支</span>
-        <span class="sum-val" style="color:#ef4444;">-7,600円</span>
+        <span class="sum-val" style="color:#ef4444;">-8,100円</span>
       </div>
     </div>
   </div>
@@ -531,6 +548,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">2</td><td class="pay-yen">470円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">2 / 7</td><td class="pay-yen">260円 / 1,790円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 7</td><td class="pay-yen">11,540円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 7 / 2 - 4 / 2 - 5 / 4 - 7 / 5 - 7</td><td class="pay-yen">1,280円 / 230円 / 300円 / 990円 / 1,630円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">2 → 7</td><td class="pay-yen">19,200円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 4 - 7</td><td class="pay-yen">5,700円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">2 → 7 → 4</td><td class="pay-yen">53,220円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 2R Card -->
@@ -665,6 +691,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">1</td><td class="pay-yen">190円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">1 / 4</td><td class="pay-yen">120円 / 220円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">1 - 4</td><td class="pay-yen">800円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">1 - 4 / 1 - 3 / 3 - 4</td><td class="pay-yen">200円 / 120円 / 180円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">1 → 4</td><td class="pay-yen">1,190円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 3 - 4</td><td class="pay-yen">340円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">1 → 4 → 3</td><td class="pay-yen">2,210円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 3R Card -->
@@ -795,6 +830,15 @@
               <td class="t5-name">エムティトップ<span class="mark-badge mark-taiko" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">○</span></td>
               <td class="t5-time">3/4</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">5</td><td class="pay-yen">780円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">5 / 2 / 6</td><td class="pay-yen">160円 / 130円 / 500円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 5</td><td class="pay-yen">700円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 5 / 5 - 6 / 2 - 6</td><td class="pay-yen">310円 / 1,150円 / 820円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">5 → 2</td><td class="pay-yen">1,850円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 5 - 6</td><td class="pay-yen">3,900円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">5 → 2 → 6</td><td class="pay-yen">18,280円</td></tr>
             </tbody>
           </table>
         </div>
@@ -932,6 +976,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">2</td><td class="pay-yen">900円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">2 / 4</td><td class="pay-yen">130円 / 100円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 4</td><td class="pay-yen">370円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 4 / 2 - 7 / 4 - 7</td><td class="pay-yen">130円 / 200円 / 110円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">2 → 4</td><td class="pay-yen">2,590円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 4 - 7</td><td class="pay-yen">220円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">2 → 4 → 7</td><td class="pay-yen">5,960円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 5R Card -->
@@ -1062,6 +1115,15 @@
               <td class="t5-name">ロッサヴィール</td>
               <td class="t5-time">クビ</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">5</td><td class="pay-yen">200円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">5 / 2 / 6</td><td class="pay-yen">110円 / 190円 / 120円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 5</td><td class="pay-yen">1,010円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 5 / 5 - 6 / 2 - 6</td><td class="pay-yen">360円 / 220円 / 640円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">5 → 2</td><td class="pay-yen">1,190円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 5 - 6</td><td class="pay-yen">1,130円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">5 → 2 → 6</td><td class="pay-yen">5,260円</td></tr>
             </tbody>
           </table>
         </div>
@@ -1198,6 +1260,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">3</td><td class="pay-yen">320円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">3 / 11 / 1</td><td class="pay-yen">260円 / 200円 / 490円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">3 - 11</td><td class="pay-yen">1,000円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">3 - 11 / 1 - 3 / 1 - 11</td><td class="pay-yen">430円 / 1,250円 / 1,440円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">3 → 11</td><td class="pay-yen">1,470円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 3 - 11</td><td class="pay-yen">5,780円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">3 → 11 → 1</td><td class="pay-yen">19,920円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 7R Card -->
@@ -1329,6 +1400,15 @@
               <td class="t5-name">リリーピンシャー</td>
               <td class="t5-time">アタマ</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">10</td><td class="pay-yen">250円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">10 / 6 / 8</td><td class="pay-yen">130円 / 120円 / 110円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">6 - 10</td><td class="pay-yen">890円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">6 - 10 / 8 - 10 / 6 - 8</td><td class="pay-yen">210円 / 170円 / 360円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">10 → 6</td><td class="pay-yen">1,240円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">6 - 8 - 10</td><td class="pay-yen">840円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">10 → 6 → 8</td><td class="pay-yen">4,460円</td></tr>
             </tbody>
           </table>
         </div>
@@ -2027,6 +2107,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">10</td><td class="pay-yen">1,370円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">10 / 1 / 11</td><td class="pay-yen">330円 / 330円 / 180円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">1 - 10</td><td class="pay-yen">8,100円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">1 - 10 / 10 - 11 / 1 - 11</td><td class="pay-yen">1,970円 / 730円 / 1,110円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">10 → 1</td><td class="pay-yen">16,930円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 10 - 11</td><td class="pay-yen">9,270円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">10 → 1 → 11</td><td class="pay-yen">103,440円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 2R Card -->
@@ -2157,6 +2246,15 @@
               <td class="t5-name">ショウナンライラ</td>
               <td class="t5-time">ハナ</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">3</td><td class="pay-yen">270円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">3 / 9 / 2</td><td class="pay-yen">130円 / 170円 / 130円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">3 - 9</td><td class="pay-yen">810円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">3 - 9 / 2 - 3 / 2 - 9</td><td class="pay-yen">400円 / 300円 / 470円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">3 → 9</td><td class="pay-yen">1,160円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 3 - 9</td><td class="pay-yen">1,290円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">3 → 9 → 2</td><td class="pay-yen">4,950円</td></tr>
             </tbody>
           </table>
         </div>
@@ -2293,6 +2391,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">2</td><td class="pay-yen">250円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">2 / 9 / 8</td><td class="pay-yen">110円 / 120円 / 150円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 9</td><td class="pay-yen">360円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 9 / 2 - 8 / 8 - 9</td><td class="pay-yen">220円 / 240円 / 320円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">2 → 9</td><td class="pay-yen">740円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 8 - 9</td><td class="pay-yen">680円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">2 → 9 → 8</td><td class="pay-yen">3,290円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 4R Card -->
@@ -2423,6 +2530,15 @@
               <td class="t5-name">ハスカップジャム</td>
               <td class="t5-time">1/2</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">8</td><td class="pay-yen">160円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">8 / 1 / 7</td><td class="pay-yen">140円 / 560円 / 320円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">1 - 8</td><td class="pay-yen">1,820円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">1 - 8 / 7 - 8 / 1 - 7</td><td class="pay-yen">920円 / 420円 / 2,380円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">8 → 1</td><td class="pay-yen">2,700円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 7 - 8</td><td class="pay-yen">2,450円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">8 → 1 → 7</td><td class="pay-yen">12,110円</td></tr>
             </tbody>
           </table>
         </div>
@@ -2559,6 +2675,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">4</td><td class="pay-yen">990円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">4 / 10 / 12</td><td class="pay-yen">240円 / 210円 / 330円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">4 - 10</td><td class="pay-yen">2,360円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">4 - 10 / 4 - 12 / 10 - 12</td><td class="pay-yen">650円 / 1,600円 / 770円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">4 → 10</td><td class="pay-yen">5,610円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">4 - 10 - 12</td><td class="pay-yen">8,080円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">4 → 10 → 12</td><td class="pay-yen">55,160円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 6R Card -->
@@ -2689,6 +2814,15 @@
               <td class="t5-name">ウインファイネスト<span class="mark-badge mark-osae" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">△</span></td>
               <td class="t5-time">1.1/2</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">12</td><td class="pay-yen">480円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">12 / 11 / 7</td><td class="pay-yen">210円 / 110円 / 350円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">11 - 12</td><td class="pay-yen">610円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">11 - 12 / 7 - 12 / 7 - 11</td><td class="pay-yen">330円 / 1,610円 / 800円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">12 → 11</td><td class="pay-yen">1,010円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">7 - 11 - 12</td><td class="pay-yen">3,410円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">12 → 11 → 7</td><td class="pay-yen">9,700円</td></tr>
             </tbody>
           </table>
         </div>
@@ -3481,6 +3615,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">3</td><td class="pay-yen">4,490円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">3 / 8 / 2</td><td class="pay-yen">500円 / 100円 / 210円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">3 - 8</td><td class="pay-yen">4,040円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">3 - 8 / 2 - 3 / 2 - 8</td><td class="pay-yen">1,520円 / 2,150円 / 210円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">3 → 8</td><td class="pay-yen">10,910円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 3 - 8</td><td class="pay-yen">4,550円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">3 → 8 → 2</td><td class="pay-yen">53,260円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 2R Card -->
@@ -3611,6 +3754,15 @@
               <td class="t5-name">リックベッラ<span class="mark-badge mark-tokuchu" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">☆</span></td>
               <td class="t5-time">アタマ</td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">10</td><td class="pay-yen">710円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">10 / 4 / 6</td><td class="pay-yen">120円 / 200円 / 100円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">4 - 10</td><td class="pay-yen">3,140円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">4 - 10 / 6 - 10 / 4 - 6</td><td class="pay-yen">430円 / 120円 / 310円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">10 → 4</td><td class="pay-yen">8,520円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">4 - 6 - 10</td><td class="pay-yen">590円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">10 → 4 → 6</td><td class="pay-yen">9,040円</td></tr>
             </tbody>
           </table>
         </div>
@@ -4775,6 +4927,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">6</td><td class="pay-yen">930円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">6 / 3 / 1</td><td class="pay-yen">310円 / 290円 / 160円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">3 - 6</td><td class="pay-yen">9,320円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">3 - 6 / 1 - 6 / 1 - 3</td><td class="pay-yen">1,690円 / 470円 / 1,110円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">6 → 3</td><td class="pay-yen">19,010円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 3 - 6</td><td class="pay-yen">8,080円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">6 → 3 → 1</td><td class="pay-yen">60,310円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 2R Card -->
@@ -4879,20 +5040,41 @@
               <td class="t5-rank">1着</td>
               <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">7</span></td>
               <td class="t5-name">ブルームザスマイル<span class="mark-badge mark-tanana" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">▲</span></td>
-              <td class="t5-time"></td>
+              <td class="t5-time">1:35.4</td>
             </tr>
             <tr>
               <td class="t5-rank">2着</td>
               <td class="t5-num"><span class="waku-badge waku-2" style="width:20px; height:20px; line-height:18px; font-size:12px;">2</span></td>
               <td class="t5-name">デリュージョン</td>
-              <td class="t5-time"></td>
+              <td class="t5-time">3</td>
             </tr>
             <tr>
               <td class="t5-rank">3着</td>
               <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">10</span></td>
               <td class="t5-name">クインズセレネ</td>
-              <td class="t5-time"></td>
+              <td class="t5-time">1</td>
             </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">9</span></td>
+              <td class="t5-name">バルミラクル<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">1.1/2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-5" style="width:20px; height:20px; line-height:18px; font-size:12px;">5</span></td>
+              <td class="t5-name">ミッシオーネ<span class="mark-badge mark-taiko" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">○</span></td>
+              <td class="t5-time">3</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">7</td><td class="pay-yen">460円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">7 / 2 / 10</td><td class="pay-yen">190円 / 290円 / 290円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 7</td><td class="pay-yen">2,500円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 7 / 7 - 10 / 2 - 10</td><td class="pay-yen">530円 / 680円 / 730円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">7 → 2</td><td class="pay-yen">4,070円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">2 - 7 - 10</td><td class="pay-yen">3,690円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">7 → 2 → 10</td><td class="pay-yen">17,270円</td></tr>
             </tbody>
           </table>
         </div>
@@ -5761,7 +5943,7 @@
         <div class="track-stats-grid">
           <div class="ts-item">
             <span class="ts-lbl">進行状況</span>
-            <span class="ts-val">1 / 12 R 完了</span>
+            <span class="ts-val">2 / 12 R 完了</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">的中率</span>
@@ -5773,7 +5955,7 @@
           </div>
           <div class="ts-item">
             <span class="ts-lbl">会場収支</span>
-            <span class="ts-val" style="color:#ef4444;">-500円</span>
+            <span class="ts-val" style="color:#ef4444;">-1,000円</span>
           </div>
         </div>
       </div>
@@ -5788,7 +5970,7 @@
         </button>
         <button class="race-pill " data-race="2" data-track="kawasaki">
           <span class="pill-num">2R</span>
-          <span class="pill-badge pill-badge-waiting">未</span>
+          <span class="pill-badge pill-badge-miss">✕</span>
         </button>
         <button class="race-pill " data-race="3" data-track="kawasaki">
           <span class="pill-num">3R</span>
@@ -5967,6 +6149,15 @@
             </tbody>
           </table>
         </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">9</td><td class="pay-yen">600円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">9 / 7 / 8</td><td class="pay-yen">310円 / 300円 / 1,350円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">7 - 9</td><td class="pay-yen">4,950円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">7 - 9 / 8 - 9 / 7 - 8</td><td class="pay-yen">1,960円 / 5,640円 / 7,040円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">9 → 7</td><td class="pay-yen">7,890円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">7 - 8 - 9</td><td class="pay-yen">84,380円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">9 → 7 → 8</td><td class="pay-yen">246,170円</td></tr>
+            </tbody>
+          </table>
+        </div>
     </div>
     
     <!-- 2R Card -->
@@ -6055,11 +6246,47 @@
 
       <!-- 的中・収支結果ブロック & 確定着順 -->
       
-        <div class="result-box result-waiting">
-          <div class="res-head">
-            <span class="res-badge-waiting">⏳ 未発走</span>
-            <span class="res-profit">発走予定 <strong>15:30</strong>（3連複5点＝500円）</span>
-          </div>
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-500円</strong>（500円投資）</span>
+              </div>
+            </div>
+            
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-6" style="width:20px; height:20px; line-height:18px; font-size:12px;">6</span></td>
+              <td class="t5-name">デーレーハヤテ</td>
+              <td class="t5-time"></td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-2" style="width:20px; height:20px; line-height:18px; font-size:12px;">2</span></td>
+              <td class="t5-name">オリーブオイル<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time"></td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-1" style="width:20px; height:20px; line-height:18px; font-size:12px;">1</span></td>
+              <td class="t5-name">アタナシア<span class="mark-badge mark-taiko" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">○</span></td>
+              <td class="t5-time"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="payout-box">
+          <div class="payout-title">💰 確定払戻金</div>
+          <table class="payout-table">
+            <tbody>
+              <tr><th class="pay-lbl">単勝</th><td class="pay-num">6</td><td class="pay-yen">150円</td></tr><tr><th class="pay-lbl">複勝</th><td class="pay-num">6 / 2</td><td class="pay-yen">100円 / 130円</td></tr><tr><th class="pay-lbl">馬連</th><td class="pay-num">2 - 6</td><td class="pay-yen">230円</td></tr><tr><th class="pay-lbl">ワイド</th><td class="pay-num">2 - 6 / 1 - 6 / 1 - 2</td><td class="pay-yen">150円 / 170円 / 210円</td></tr><tr><th class="pay-lbl">馬単</th><td class="pay-num">6 → 2</td><td class="pay-yen">460円</td></tr><tr class="pay-row-3fuku"><th class="pay-lbl">3連複</th><td class="pay-num">1 - 2 - 6</td><td class="pay-yen">360円</td></tr><tr class="pay-row-3tan"><th class="pay-lbl">3連単</th><td class="pay-num">6 → 2 → 1</td><td class="pay-yen">1,020円</td></tr>
+            </tbody>
+          </table>
         </div>
     </div>
     

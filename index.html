@@ -244,7 +244,7 @@
     <div class="summary-title" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
       <div>
         <span>📊 本日のリアルタイム成績（全レース集計）</span>
-        <span style="font-size:11px; color:#64748b; font-weight:normal; margin-left:8px;">🔄 最終更新 12:23（10分毎自動更新）</span>
+        <span style="font-size:11px; color:#64748b; font-weight:normal; margin-left:8px;">🔄 最終更新 12:33（10分毎自動更新）</span>
       </div>
       <div style="display:flex; align-items:center; gap:8px;">
         <span style="font-size:11px; color:#2563eb; font-weight:700;">3連複＆合成オッズ重視モデル</span>
@@ -254,19 +254,19 @@
     <div class="summary-grid">
       <div class="sum-item">
         <span class="sum-lbl">完了レース</span>
-        <span class="sum-val">2 / 59 R</span>
+        <span class="sum-val">3 / 59 R</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">的中率</span>
-        <span class="sum-val">50.0%</span>
+        <span class="sum-val">33.3%</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">回収率</span>
-        <span class="sum-val">34.0%</span>
+        <span class="sum-val">22.7%</span>
       </div>
       <div class="sum-item">
         <span class="sum-lbl">本日トータル収支</span>
-        <span class="sum-val" style="color:#ef4444;">-660円</span>
+        <span class="sum-val" style="color:#ef4444;">-1,160円</span>
       </div>
     </div>
   </div>
@@ -1624,7 +1624,7 @@
         <div class="track-stats-grid">
           <div class="ts-item">
             <span class="ts-lbl">進行状況</span>
-            <span class="ts-val">0 / 12 R 完了</span>
+            <span class="ts-val">1 / 12 R 完了</span>
           </div>
           <div class="ts-item">
             <span class="ts-lbl">的中率</span>
@@ -1636,7 +1636,7 @@
           </div>
           <div class="ts-item">
             <span class="ts-lbl">会場収支</span>
-            <span class="ts-val" style="color:#64748b;">+0円</span>
+            <span class="ts-val" style="color:#ef4444;">-500円</span>
           </div>
         </div>
       </div>
@@ -1647,7 +1647,7 @@
           
         <button class="race-pill active" data-race="1" data-track="nagoya">
           <span class="pill-num">1R</span>
-          <span class="pill-badge pill-badge-waiting">未</span>
+          <span class="pill-badge pill-badge-miss">✕</span>
         </button>
         <button class="race-pill " data-race="2" data-track="nagoya">
           <span class="pill-num">2R</span>
@@ -1785,11 +1785,50 @@
 
       <!-- 的中・収支結果ブロック & 確定着順 -->
       
-        <div class="result-box result-waiting">
-          <div class="res-head">
-            <span class="res-badge-waiting">⏳ 未発走</span>
-            <span class="res-profit">発走予定 <strong>12:20</strong>（3連複5点＝500円）</span>
-          </div>
+            <div class="result-box result-miss">
+              <div class="res-head">
+                <span class="res-badge-miss">✕ 不的中</span>
+                <span class="res-profit">収支 <strong>-500円</strong>（500円投資）</span>
+              </div>
+            </div>
+            
+        <div class="top5-box">
+          <div class="top5-title">🏁 確定着順（上位5着）</div>
+          <table class="top5-table">
+            <tbody>
+              
+            <tr>
+              <td class="t5-rank">1着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">10</span></td>
+              <td class="t5-name">クィーンズウィンク</td>
+              <td class="t5-time">1:39.4</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">2着</td>
+              <td class="t5-num"><span class="waku-badge waku-1" style="width:20px; height:20px; line-height:18px; font-size:12px;">1</span></td>
+              <td class="t5-name">サンライズマシュー<span class="mark-badge mark-honmei" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">◎</span></td>
+              <td class="t5-time">2.1/2</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">3着</td>
+              <td class="t5-num"><span class="waku-badge waku-8" style="width:20px; height:20px; line-height:18px; font-size:12px;">11</span></td>
+              <td class="t5-name">クラリノ<span class="mark-badge mark-tokuchu" style="font-size:10px; width:18px; height:18px; line-height:18px; margin-left:6px; vertical-align:middle;">☆</span></td>
+              <td class="t5-time">クビ</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">4着</td>
+              <td class="t5-num"><span class="waku-badge waku-6" style="width:20px; height:20px; line-height:18px; font-size:12px;">6</span></td>
+              <td class="t5-name">ヤマカンドリーミン</td>
+              <td class="t5-time">1</td>
+            </tr>
+            <tr>
+              <td class="t5-rank">5着</td>
+              <td class="t5-num"><span class="waku-badge waku-7" style="width:20px; height:20px; line-height:18px; font-size:12px;">9</span></td>
+              <td class="t5-name">ケイズシャーロット</td>
+              <td class="t5-time">1.1/2</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
     </div>
     
